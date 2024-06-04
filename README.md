@@ -8,7 +8,7 @@
 - [開発環境]()
 - [デプロイ方法]()
 
-### 関連ロゴ
+###　関連ロゴ
 <div>
 <img alt="vite" height="50px" width="50px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Vitejs-logo.svg/2078px-Vitejs-logo.svg.png">
 <img alt="React" height="50px" width="50px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1200px-React-icon.svg.png">
