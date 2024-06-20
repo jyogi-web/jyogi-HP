@@ -6,14 +6,15 @@ import Guidelines from './components/Guidelines';
 import Admission from './components/Admission';
 import Members from './components/Members';
 import Board from './components/Board';
+import './styles/index.css';
 
 function App() {
   const [count, setCount] = useState(0);
 
   return (
-    <>
+    <div>
       <header>
-        <h1>Hello, JyogiHP!</h1>
+        <h1>情報技術研究部のホームページ</h1>
         <nav>
           <ul>
             <li><Link to="/home">ホーム</Link></li>
@@ -25,6 +26,7 @@ function App() {
           </ul>
         </nav>
       </header>
+      <hr />
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -36,10 +38,12 @@ function App() {
           <Route path="/board" element={<Board />} />
         </Routes>
       </main>
+      <hr />
       <footer>
-        <p>福岡工業大学 情報技術研究部</p>
+      <div>福岡工業大学 情報技術研究部　〒811-0295 福岡市東区和白東3-30-1</div>
+      <div>©2024 情報技術研究部. All right reserved.</div>
       </footer>
-    </>
+    </div>
   );
 }
 
