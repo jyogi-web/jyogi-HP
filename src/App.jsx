@@ -1,13 +1,50 @@
-import { useState } from 'react'
+import { useState } from 'react';
+import { BrowserRouter, Route, Routes, Link } from 'react-router-dom';
+import Home from './components/Home';
+import About from './components/About';
+import Guidelines from './components/Guidelines';
+import Admission from './components/Admission';
+import Members from './components/Members';
+import Board from './components/Board';
+import './styles/index.css';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
   return (
-    <>
-      <h1>Hello, world!</h1>
-    </>
-  )
+    <div className='container'>
+      <header>
+        <h1>情報技術研究部のホームページ</h1>
+        <nav>
+          <ul>
+            <li><Link to="/home">ホーム</Link></li>
+            <li><Link to="/about">はじめに</Link></li>
+            <li><Link to="/guidelines">利用上の注意</Link></li>
+            <li><Link to="/admission">入部希望者へ</Link></li>
+            <li><Link to="/members">所属部員</Link></li>
+            <li><Link to="/board">掲示板</Link></li>
+          </ul>
+        </nav>
+      </header>
+      <hr />
+      <main>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/guidelines" element={<Guidelines />} />
+          <Route path="/admission" element={<Admission />} />
+          <Route path="/members" element={<Members />} />
+          <Route path="/board" element={<Board />} />
+        </Routes>
+      </main>
+      <hr />
+      <footer>
+      {/* <div>福岡工業大学 情報技術研究部　〒811-0295 福岡市東区和白東3-30-1</div> */}
+      <div>©2024 情報技術研究部. All right reserved.</div>
+      </footer>
+    </div>
+  );
 }
 
-export default App
+export default App;
