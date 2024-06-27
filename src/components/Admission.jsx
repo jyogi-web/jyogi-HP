@@ -11,23 +11,17 @@ const Admission = () => {
             <p>活動内容をご見学されたい方は、サイトの作品紹介や5月、11月にある作品発表をご覧になれます。 なお、サイトにある作品はそれらの作品発表時に提出されたものとなっております。</p>
 
             <h2>入部方法について</h2>
-            <h4>入部に必要なもの</h4>
-            <p>以下に入部の時に必要な物を記述しておきます。</p>
-            <p>これらは、部室棟の部室に持参されれば結構です。</p>
-            <ul>
-                <li>筆記用具</li>
-                <li>判子</li>
-                <li>写真</li>
-            </ul>
-
-            <p>筆記用具は必要事項を紙に記入する際に使います。
-            残りは名簿作成時に必要となります</p>
-            <p>会費は年間6000円（月額500円）となっており、前期、後期の最初の部会時に半年分（3000円）ずつ徴収致します。</p>
-
+            <p>入部方法は以下の2つの方法があります</p>
+            <p>●部室に直接訪問し、入部用紙に記入する</p>
+            <p>●ホームページからGoogleformsに記入する</p>
+            
+            <p>会費は年間3000円（月額250円）となっており、前期の最初の部会時に1年分（3000円）徴収致します。</p>
             <p>なお、サークル活動は基本的に放課後に行われますので、夕方以降に訪問することをお勧めいたします。</p>
-            <div className='add-form'>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSd0LpbGEOvlb-g6Awiu664Ik6oQdZymdeDssMeimWZWP85vLQ/viewform?usp=sf_link">Googleforms</a>
-            </div>
+            <p>また、オンラインでの入部申し込みも受け付けております。</p>
+            
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSd0LpbGEOvlb-g6Awiu664Ik6oQdZymdeDssMeimWZWP85vLQ/viewform?usp=sf_link"><div className='add-form'>Googleforms</div></a>
+            {/* Googleformsへのリンクをボタン風にする */}
+            
         </div>
     );
 };
