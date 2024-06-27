@@ -25,6 +25,9 @@ const Admission = () => {
             <p>会費は年間6000円（月額500円）となっており、前期、後期の最初の部会時に半年分（3000円）ずつ徴収致します。</p>
 
             <p>なお、サークル活動は基本的に放課後に行われますので、夕方以降に訪問することをお勧めいたします。</p>
+            <div className='add-form'>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSd0LpbGEOvlb-g6Awiu664Ik6oQdZymdeDssMeimWZWP85vLQ/viewform?usp=sf_link">Googleforms</a>
+            </div>
         </div>
     );
 };
