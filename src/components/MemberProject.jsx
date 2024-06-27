@@ -19,11 +19,11 @@ const projects = [
     image: 'img/MemberProjectImage/FIT-typing.png'
   },
   {
-    title: '射的60s',
+    title: 'リア充なんか蹴っ飛ばせ',
     author: 'Rita',
-    technologies: ['Unity', 'C#'],
-    link: 'https://unityroom.com/games/shootinggallery60s',
-    image: 'img/MemberProjectImage/shateki60s.png'
+    technologies: ['Unity', 'C#','???'],
+    link: 'https://unityroom.com/games/riajuu_kickaway',
+    image: 'img/MemberProjectImage/riajuu_kickaway.png'
   },
   {
     title: 'FIT-typing',

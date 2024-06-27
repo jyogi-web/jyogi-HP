@@ -2,11 +2,18 @@
 *ここには全体ページのCSSを記入します
 *個々のページに関しては個別で作成します
 */
+/* CSSリセット */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+  
 body {
 	background-color: #BCCAF5;
 	background-image: url(../../img/bg-body.gif);
 	background-repeat: repeat-x;
-	text-align: center;
+	/* text-align: center; */
 	margin: 0;
 	padding: 0;
   	font-family: Arial, sans-serif;
@@ -14,8 +21,7 @@ body {
 
 .Page li {
 	list-style: none;
-    display: inline;
-    margin-right: 1em; 
+    display: inline; 
 	
 }
 
@@ -44,6 +50,7 @@ body {
 
 .Page{
 	list-style: decimal;
+	width: 500px;
 }
 
 
@@ -64,13 +71,6 @@ main{
 	flex-grow: 1;
 	padding: 20px;
 }
-
-/* img {
-	border: 0;
-}
-nav{
-	width: auto;
-} */
 
 .Page li:hover {
 	background-color: gray;
