@@ -2,7 +2,7 @@ import React from 'react';
 
 const Guidelines = () => {
     return (
-        <div>
+        <div className='Page'>
             <h2>諸注意</h2>
             <h3>作品について</h3>
             <p>情報技術研究部はサークル活動として作品などを個人で制作しております。 よって未完成部分やバグなどが含まれている可能性があることをご了承下さい。</p>

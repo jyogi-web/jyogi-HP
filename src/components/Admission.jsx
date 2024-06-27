@@ -2,7 +2,7 @@ import React from 'react';
 
 const Admission = () => {
     return (
-        <div>
+        <div className='Page'>
             <h2>サークル見学について</h2>
             <h4>お気軽にご見学下さい</h4>
             <p>見学希望者はサイトトップに表示されている日の部会や、直接部室の方にお訪ね下さい。</p>
