@@ -1,0 +1,42 @@
+/* border-bottom:	1px  solid #3A48FF; */
+.project-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    margin: 16px;
+    text-align: center;
+    background-color: #f9f9f9;
+    box-sizing: border-box;
+    flex: 1 1 calc(50% - 32px); /* 横に2つ並べるための設定 */
+    max-width: calc(50% - 32px); /* カードの最大幅を設定 */
+  }
+  
+  .project-image {
+    width: 100%; /* 画像をカードの幅に合わせる */
+    height: auto; /* アスペクト比を保持 */
+    border-radius: 8px;
+  }
+  
+  .project-title {
+    font-size: 1.5em;
+    margin: 8px 0;
+    border-bottom:	1px  solid #3A48FF;
+  }
+  
+  .project-author,
+  .project-technologies {
+    font-size: 1em;
+    margin: 4px 0;
+  }
+  
+  .project-link {
+    color: #0066cc;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .project-link:hover {
+    text-decoration: underline;
+  }
+  
+  

@@ -1,0 +1,16 @@
+.member-projects {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 16px; /* カード間のスペースを設定 */
+    padding: 16px;
+    box-sizing: border-box;
+  }
+  
+  @media (max-width: 768px) {
+    .project-card {
+      flex: 1 1 100%; /* 画面幅が狭い場合、カードを縦に並べる */
+      max-width: 100%;
+    }
+  }
+  

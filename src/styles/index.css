@@ -12,17 +12,17 @@ body {
   	font-family: Arial, sans-serif;
 }
 
-li {
+.Page li {
 	list-style: none;
     display: inline;
     margin-right: 1em; 
 	
 }
 
-h1 {
+.Header h1 {
 	margin:auto;
 }
-h2 {
+.Page h2 {
 	border-left:	15px solid #3A48FF;
 	border-bottom:	1px  solid #3A48FF;
 	width: 400px;
@@ -30,7 +30,7 @@ h2 {
 	margin-top: 20px;
 	margin-bottom: 10px;
 }
-div{
+.Page div{
 	text-align: left;
 }
 .App {
@@ -72,10 +72,10 @@ nav{
 	width: auto;
 } */
 
-li:hover {
+.Page li:hover {
 	background-color: gray;
 }
-ul{
+.Page ul{
 	/* list-style: none; */
 	padding: 0;
 	margin: 0;
@@ -87,10 +87,6 @@ ul{
 	h1{
 		color: red;
 	}
-	nav{
-		width: auto;
-	}
-
 }
 	
 @media screen and (min-width: 769px) and (max-width: 1024px) {
@@ -98,17 +94,11 @@ ul{
 	h1{
 		color: blue;
 	}
-	nav{
-		width: 896px;
-	}
 }
 	
 @media screen and (min-width: 1025px) {
 	/* 1025px以上の画面サイズで適用されるスタイル */
 	h1{
 		color: green;
-	}
-	nav{
-		width: auto;
 	}
 }

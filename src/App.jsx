@@ -9,6 +9,7 @@ import Board from './components/Board';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import Footer from './components/Footer';
+import MemberProject from './components/MemberProject';
 import './styles/index.css';
 
 function App() {
@@ -29,6 +30,8 @@ function App() {
               <Route path="/admission" element={<Admission />} />
               <Route path="/members" element={<Members />} />
               <Route path="/board" element={<Board />} />
+              <Route path="/memberproject" element={<MemberProject />} />
+
           </Routes>
         </main>
       </div>
