@@ -2,7 +2,7 @@ import React from 'react';
 
 const About = () => {
     return (
-        <div>
+        <div className='Page'>
             <h2>About</h2>
             <div>作品制作をする活発なサークルです</div>
             <div>情報技術研究部、通称「じょぎ」とは主にパソコンを用いた作品を制作しております。 基本理念として各々の自由な発想に任せた作品作りを行っております。</div>

@@ -7,6 +7,7 @@ import Admission from './components/Admission';
 import Members from './components/Members';
 import Board from './components/Board';
 import Header from './components/Header';
+import Sidebar from './components/Sidebar';
 import Footer from './components/Footer';
 import './styles/index.css';
 
@@ -14,20 +15,23 @@ function App() {
   const [count, setCount] = useState(0);
 
   return (
-    <div className='container'>
+    <div className='App'>
       <Header />
       <hr />
-      <main>
-        <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/home" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/guidelines" element={<Guidelines />} />
-            <Route path="/admission" element={<Admission />} />
-            <Route path="/members" element={<Members />} />
-            <Route path="/board" element={<Board />} />
-        </Routes>
-      </main>
+      <div className='main-content'>
+        <Sidebar/>
+        <main className='route-page'>
+          <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/home" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/guidelines" element={<Guidelines />} />
+              <Route path="/admission" element={<Admission />} />
+              <Route path="/members" element={<Members />} />
+              <Route path="/board" element={<Board />} />
+          </Routes>
+        </main>
+      </div>
       <hr />
       <Footer />
       </div>
