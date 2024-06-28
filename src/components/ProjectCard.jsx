@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/ProjectCard.css'; // CSSファイルをインポート
+import '../styles/ProjectCard.css';
 
 const ProjectCard = ({ title, author, technologies, link, image }) => {
   return (
