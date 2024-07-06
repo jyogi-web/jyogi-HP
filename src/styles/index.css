@@ -1,114 +1,96 @@
-/*
-*ここには全体ページのCSSを記入します
-*個々のページに関しては個別で作成します
-*/
-body {
+/* CSSリセット */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+  }
+  
+  /* 全体のスタイル */
+  body {
 	background-color: #BCCAF5;
 	background-image: url(../../img/bg-body.gif);
 	background-repeat: repeat-x;
-	text-align: center;
-	margin: 0;
-	padding: 0;
-  	font-family: Arial, sans-serif;
-}
-
-li {
-	list-style: none;
-    display: inline;
-    margin-right: 1em; 
-	
-}
-
-h1 {
-	margin:auto;
-}
-h2 {
-	border-left:	15px solid #3A48FF;
-	border-bottom:	1px  solid #3A48FF;
-	width: 400px;
-	padding: 5px;
-	margin-top: 20px;
-	margin-bottom: 10px;
-}
-div{
-	text-align: left;
-}
-.App {
+	font-family: Arial, sans-serif;
+  }
+  
+  /* コンテナスタイル */
+  .App {
 	width: 90%;
 	max-width: 1200px;
-	margin: 0px;
-	padding: 0px;
+	margin: 0 auto;
+	padding: 0;
 	display: flex;
 	flex-direction: column;
-}
-
-.Page{
+  }
+  
+  /* メインコンテンツエリア */
+  .main-content {
+	display: flex;
+	flex-direction: row;
+	padding: 20px;
+  }
+  
+  /* 汎用クラス */
+  .Page {
 	list-style: decimal;
-}
-
-
-.footer{
+	width: 500px;
+	padding: 0;
+	margin: 0;
+  }
+  
+  .Page h2 {
+	border-left: 15px solid #3A48FF;
+	border-bottom: 1px solid #3A48FF;
+	width: 400px;
+	padding: 5px;
+	margin: 20px 0 10px 0;
+  }
+  
+  .Page div {
+	text-align: left;
+  }
+  
+  .Page li {
+	list-style: none;
+	display: inline;
+  }
+  
+  .Page li:hover {
+	background-color: gray;
+  }
+  
+  .Page ul {
+	padding: 0;
+	margin: 0;
+  }
+  
+  /* フッタースタイル */
+  .footer {
 	padding: 10px;
 	text-align: center;
 	margin-top: auto;
-}
-.footer ul{
+  }
+  
+  .footer ul {
 	text-align: center;
-	
-}
-.main-content{
-	display: flex;
-}
-
-main{
-	flex-grow: 1;
-	padding: 20px;
-}
-
-/* img {
-	border: 0;
-}
-nav{
-	width: auto;
-} */
-
-li:hover {
-	background-color: gray;
-}
-ul{
-	/* list-style: none; */
-	padding: 0;
-	margin: 0;
-}
-
-
-@media screen and (max-width: 768px){
-	/* 768px以下の画面サイズで適用されるスタイル */
-	h1{
-		color: red;
+  }
+  
+  /* レスポンシブスタイル */
+  @media screen and (max-width: 768px) {
+	h1 {
+	  color: red;
 	}
-	nav{
-		width: auto;
+  }
+  
+  @media screen and (min-width: 769px) and (max-width: 1024px) {
+	h1 {
+	  color: blue;
 	}
-
-}
-	
-@media screen and (min-width: 769px) and (max-width: 1024px) {
-	/* 769px~1024pxの画面サイズで適用されるスタイル */
-	h1{
-		color: blue;
+  }
+  
+  @media screen and (min-width: 1025px) {
+	h1 {
+	  color: green;
 	}
-	nav{
-		width: 896px;
-	}
-}
-	
-@media screen and (min-width: 1025px) {
-	/* 1025px以上の画面サイズで適用されるスタイル */
-	h1{
-		color: green;
-	}
-	nav{
-		width: auto;
-	}
-}
+  }
+  
