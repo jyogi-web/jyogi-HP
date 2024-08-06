@@ -8,6 +8,11 @@
 - [開発環境]()
 - [デプロイ方法]()
 
+### debug
+```
+pnpm run build && pnpm run dev
+```
+
 ### 関連ロゴ
 
 <div>
