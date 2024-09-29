@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Home from './components/Home';
 import About from './components/About';
@@ -13,8 +12,6 @@ import MemberProject from './components/MemberProject';
 import './styles/index.css';
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
     <div className='App'>
       <Header />
@@ -31,7 +28,6 @@ function App() {
               <Route path="/members" element={<Members />} />
               <Route path="/board" element={<Board />} />
               <Route path="/memberproject" element={<MemberProject />} />
-
           </Routes>
         </main>
       </div>
