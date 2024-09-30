@@ -5,9 +5,8 @@ const Header = () => {
     return(
         <div className='header'>
             <div className='header-main'>
-                <Link to="/"><img src='imgs/jyogi-icon.gif' className='header-icon'/></Link>
-                <img src='imgs/jyogi-top-logo.png' className='header-logo'/>
-
+                <Link to="/"> <img src="/imgs/jyogi-icon.gif" className='header-icon' alt="Jyogi Icon"/></Link>
+                <img src="/imgs/jyogi-top-logo.png" className='header-logo' alt="Jyogi Logo"/>
             </div>
             <nav>
                 <div className='header-item'><Link to="/home" className="link">ホーム</Link></div>

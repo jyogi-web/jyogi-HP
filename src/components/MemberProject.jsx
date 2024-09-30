@@ -1,5 +1,8 @@
 import ProjectCard from './ProjectCard';
 import '../styles/MemberProject.css'
+import FITTyping from '/imgs/MemberProjectImage/FIT-typing.png';
+import Shateki60s from '/imgs/MemberProjectImage/shateki60s.png';
+import RiajuuKickaway from '/imgs/MemberProjectImage/riajuu_kickaway.png';
 
 
 const projects = [
@@ -8,21 +11,21 @@ const projects = [
     author: 'Rita',
     technologies: ['Unity', 'C#'],
     link: 'https://unityroom.com/games/shootinggallery60s',
-    image: 'imgs/MemberProjectImage/shateki60s.png'
+    image: Shateki60s
   },
   {
     title: 'FIT-typing',
     author: 'Rita',
     technologies: ['Unity','C#', 'Illustrator'],
     link: 'https://unityroom.com/games/fit-typing',
-    image: 'imgs/MemberProjectImage/FIT-typing.png'
+    image: FITTyping 
   },
   {
     title: 'リア充なんか蹴っ飛ばせ',
     author: 'Rita',
     technologies: ['Unity', 'C#','???'],
     link: 'https://unityroom.com/games/riajuu_kickaway',
-    image: 'imgs/MemberProjectImage/riajuu_kickaway.png'
+    image: RiajuuKickaway
   },
   // 他のプロジェクトもここに追加できます
   /*
