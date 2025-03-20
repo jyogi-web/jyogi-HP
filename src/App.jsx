@@ -10,10 +10,11 @@ import Sidebar from './components/Sidebar';
 import Footer from './components/Footer';
 import MemberProject from './components/MemberProject';
 import './styles/index.css';
+import { Button,Box } from '@chakra-ui/react';
 
 function App() {
   return (
-    <div className='App'>
+    <Box>
       <Header />
       <hr />
       <div className='main-content'>
@@ -33,7 +34,7 @@ function App() {
       </div>
       <hr />
       <Footer />
-      </div>
+      </Box>
   );
 }
 
