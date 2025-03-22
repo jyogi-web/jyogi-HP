@@ -10,15 +10,15 @@ import Sidebar from './components/Sidebar';
 import Footer from './components/Footer';
 import MemberProject from './components/MemberProject';
 import './styles/index.css';
-import { Button,Box } from '@chakra-ui/react';
+import { Wrap,Box } from '@chakra-ui/react';
 
 function App() {
   return (
-    <Box>
+    <Wrap>
       <Header />
       <hr />
-      <div className='main-content'>
-        <Sidebar/>
+      <div className=''>
+        {/* <Sidebar/> */}
         <main className='route-page'>
           <Routes>
               <Route path="/" element={<Home />} />
@@ -32,9 +32,8 @@ function App() {
           </Routes>
         </main>
       </div>
-      <hr />
       <Footer />
-      </Box>
+      </Wrap>
   );
 }
 
