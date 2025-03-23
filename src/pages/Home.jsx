@@ -1,6 +1,7 @@
 import { Avatar, For, VStack, Text, Center,Image } from "@chakra-ui/react";
 import TimeLine from "./TimeLine";
 import About from "./About";
+import News from "./News";
 
 const Home = () => {
   return (
@@ -10,6 +11,7 @@ const Home = () => {
             {/* <TimeLine /> */}
         </Center>
         <About/>
+        <News/>
     </VStack>
   );ï
 };
