@@ -1,15 +1,17 @@
+import { Avatar, For, VStack, Text, Center,Image } from "@chakra-ui/react";
+import TimeLine from "./TimeLine";
+import About from "./About";
+
 const Home = () => {
-    return (
-        <div className='Page'>
-            <h2>Home</h2>
-            <div className='news-container'>
-                <h2>Jyogi News</h2>
-                <div className='time'>2024/06/19</div><div className='content'>サイトを作成しています</div>
-                
-            </div>
-            <p>-</p>
-        </div>
-    );
+  return (
+    <VStack grap="18">
+        <Image src='imgs/header-back-logo.png'/>
+        <Center>
+            {/* <TimeLine /> */}
+        </Center>
+        <About/>
+    </VStack>
+  );ï
 };
 
 export default Home;
