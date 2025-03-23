@@ -1,20 +1,85 @@
+import {
+  Container,
+  Flex,
+  Box,
+  Image,
+  Heading,
+  Text,
+  VStack,
+  HStack,
+  Badge,
+} from "@chakra-ui/react";
+
 const About = () => {
-    return (
-        <div className='Page'>
-            <h2>About</h2>
-            <div>作品制作をする活発なサークルです</div>
-            <div>情報技術研究部、通称「じょぎ」とは主にパソコンを用いた作品を制作しております。 基本理念として各々の自由な発想に任せた作品作りを行っております。</div>
+  return (
+    <Container maxW="75%" py={8} mx={"auto"}>
+      <Flex direction={{ base: "column", md: "row" }} gap={8} align="center">
+        <Box flex="1" maxW={{ base: "100%", md: "50%" }}>
+          <Image
+            src="imgs/free-shuugou.jpeg"
+            alt="jyogi集合写真"
+            w="full"
+            h="auto"
+            objectFit="cover"
+            rounded="md"
+            shadow="md"
+          />
+        </Box>
 
-            <div>作成した作品は毎年行われる文化発表会や立花祭、部内における作品発表会などで発表しております。</div>
+        <Box flex="1" maxW={{ base: "100%", md: "50%" }} p={4}>
+          <VStack align="center" spacing={6} width="100%">
+            <Heading size="3xl" mb={4}>
+              じょぎ(情報技術研究部)
+            </Heading>
+            <Box textAlign="center" width="100%">
+              <Text fontWeight="bold" fontSize="2xl" mb={3}>
+                部員数
+              </Text>
+              <Badge
+                colorScheme="blue"
+                fontSize="md"
+                px={4}
+                py={1.5}
+                borderRadius="full"
+              >
+                121人
+              </Badge>
+            </Box>
 
-            <h2>サイトの目的意義</h2>
-            このサイトでは主に、部員への連絡事項の伝達・新入生へのサークルの紹介がメインとなっております。
+            <Box textAlign="center" width="100%">
+              <Text fontWeight="bold" fontSize="2xl" mb={3}>
+                活動内容
+              </Text>
+              <Flex width="100%" justify='center' flexWrap="wrap" gap={4}>
+                <VStack align="start" spacing={2} minW="120px">
+                  <Text fontSize="md">・週1回の部会への参加</Text>
+                  <Text fontSize="md">・部室での開発（自由）</Text>
+                  <Text fontSize="md">・ゲーム開発</Text>
+                  <Text fontSize="md">・Web開発</Text>
+                </VStack>
+                <VStack align="start" spacing={2} minW="120px">
+                  <Text fontSize="md">・イベントへの参加</Text>
+                  <Text fontSize="md">・部内ゲームイベント</Text>
+                  <Text fontSize="md">・部員旅行</Text>
+                </VStack>
+              </Flex>
+            </Box>
 
-            <div>新入生など入部に関しては「入部希望者へ」のページに記載されています。 サークルの活動自体については「活動内容」や「作品紹介」などに詳しく記載されていますのでそちらをご参照ください。</div>
-
-            <div>所属部員の連絡についてはトップページか「掲示板」にて確認ください。</div>
-        </div>
-    );
+            <Box textAlign="center" width="100%">
+              <Text fontWeight="bold" fontSize="2xl" mb={3}>
+                年間予定
+              </Text>
+              <VStack align="center" spacing={2} width="100%">
+                <Text fontSize="md">・4月：新入部員歓迎会</Text>
+                <Text fontSize="md">・9月：部員旅行</Text>
+                <Text fontSize="md">・11月：立花祭展示</Text>
+              </VStack>
+            </Box>
+          </VStack>{" "}
+        </Box>
+      </Flex>
+    </Container>
+  );
 };
 
 export default About;

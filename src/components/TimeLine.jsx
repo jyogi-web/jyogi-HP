@@ -1,13 +1,13 @@
 import React from "react";
-import { Timeline, Text, Wrap } from "@chakra-ui/react";
+import { Timeline, Text, Container, Heading } from "@chakra-ui/react";
 import { Check } from "lucide-react";
 
 const TimeLine = () => {
-  // KVからフェッチしてくるようにしても良いかも
+  // todo : KVからフェッチしてくるようにしても良いかも
   return (
-    <Wrap>
+    <Container>
+      <Heading size="3xl">タイムライン</Heading>
       <Timeline.Root maxW="400px">
-        {/* タイムライン */}
         <Timeline.Item>
           <Timeline.Connector>
             <Timeline.Separator />
@@ -59,7 +59,7 @@ const TimeLine = () => {
           </Timeline.Content>
         </Timeline.Item>
       </Timeline.Root>
-    </Wrap>
+    </Container>
   );
 };
 

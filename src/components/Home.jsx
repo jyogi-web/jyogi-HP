@@ -1,11 +1,16 @@
-import { Avatar, Badge, For, Span, Stack, Timeline, Text  } from "@chakra-ui/react";
+import { Avatar, For, VStack, Text, Center,Image } from "@chakra-ui/react";
 import TimeLine from "./TimeLine";
+import About from "./About";
 
 const Home = () => {
   return (
-    <Stack grap="18">
-        <TimeLine />
-    </Stack>
+    <VStack grap="18">
+        <Image src='imgs/header-back-logo.png'/>
+        <Center>
+            {/* <TimeLine /> */}
+        </Center>
+        <About/>
+    </VStack>
   );ï
 };
 
