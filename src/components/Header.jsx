@@ -1,22 +1,11 @@
 import { Link } from 'react-router-dom';
-import '../styles/Header.css';
+import { Container,Image } from '@chakra-ui/react';
 
 const Header = () => {
     return(
-        <div className='header'>
-            <div className='header-main'>
-                <Link to="/"> <img src="/imgs/jyogi-icon.gif" className='header-icon' alt="Jyogi Icon"/></Link>
-                <img src="/imgs/jyogi-top-logo.png" className='header-logo' alt="Jyogi Logo"/>
-            </div>
-            <nav>
-                <div className='header-item'><Link to="/home" className="link">ホーム</Link></div>
-                <div className='header-item'><Link to="/about" className="link">はじめに</Link></div>
-                <div className='header-item'><Link to="/guidelines" className="link">利用上の注意</Link></div>
-                <div className='header-item'><Link to="/admission" className="link">入部希望者へ</Link></div>
-                <div className='header-item'><Link to="/members" className="link">所属部員</Link></div>
-                <div className='header-item'><Link to="/board" className="link">掲示板</Link></div>
-            </nav>           
-        </div>
+        <Container px={5}>
+            <Link to="/"> <Image src="/imgs/jyogi-text.png" alt="Jyogi"/></Link>
+        </Container>
     );
 }
 export default Header;
