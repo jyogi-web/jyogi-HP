@@ -1,3 +1,5 @@
+"use client"
+
 import PropTypes from 'prop-types';
 import {
   Box,
@@ -6,12 +8,13 @@ import {
   Text,
   Stack,
   Badge,
-  HStack,
   Link,
-  Button
+  Button,
+  CloseButton,
+  Dialog,
+  Portal
 } from '@chakra-ui/react';
-import { useColorMode } from "@/components/ui/color-mode";
-import { FaGithub, FaYoutube, FaExternalLinkAlt, FaNewspaper } from 'react-icons/fa';
+import { FaGithub, FaYoutube, FaExternalLinkAlt, FaNewspaper, FaInfoCircle } from 'react-icons/fa';
 
 const ProjectCard = ({
   title,
@@ -29,17 +32,15 @@ const ProjectCard = ({
     const videoId = url.match(/(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/);
 
     if (videoId && videoId[1]) {
-
-      return `https://img.youtube.com/vi/${videoId[1]}/hqdefault.jpg`;
+      return `https://img.youtube.com/vi/${videoId[1]}/maxresdefault.jpg`;
     }
 
     return null;
   };
 
   const thumbnailUrl = getYoutubeThumbnail(youtubeUrl);
-  const { colorMode } = useColorMode();
-  const bgColor = colorMode === 'light' ? 'white' : 'gray.800';
-  const borderColor = colorMode === 'light' ? 'gray.200' : 'gray.700';
+  const bgColor = 'white';
+  const borderColor = 'gray.200';
 
   return (
     <Box
@@ -113,9 +114,85 @@ const ProjectCard = ({
       </Stack>
 
       {description && (
-        <Text color={'gray.600'} mt={3} fontSize={'sm'} noOfLines={3}>
-          {description}
-        </Text>
+        <Box mt={3}>
+          <Dialog.Root size="md" placement="center" motionPreset="slide-in-bottom">
+            <Dialog.Trigger asChild>
+              <Button
+                size="sm"
+                colorScheme="teal"
+                variant="solid"
+                leftIcon={<FaInfoCircle />}
+                width="100%"
+              >
+                詳細
+              </Button>
+            </Dialog.Trigger>
+            <Portal>
+              <Dialog.Backdrop />
+              <Dialog.Positioner>
+                <Dialog.Content>
+                  <Dialog.Header>
+                    <Dialog.Title>{title}</Dialog.Title>
+                    <Dialog.CloseTrigger asChild>
+                      <CloseButton size="sm" />
+                    </Dialog.CloseTrigger>
+                  </Dialog.Header>
+                  <Dialog.Body>
+                    <Text mb={4} fontWeight="bold">作成者: {author}</Text>
+                    <Stack direction={'row'} mb={4} flexWrap="wrap" gap={1}>
+                      {technologies.map((tech, index) => (
+                        <Badge key={index} colorScheme="blue" fontSize={'sm'}>
+                          {tech}
+                        </Badge>
+                      ))}
+                    </Stack>
+                    <Text mb={4}>{description}</Text>
+                    {thumbnailUrl && (
+                      <Box maxW="100%" mb={4}>
+                        <Image
+                          src={thumbnailUrl}
+                          alt={`${title} thumbnail`}
+                          borderRadius="md"
+                          w="full"
+                        />
+                      </Box>
+                    )}
+                    <Stack direction="row" spacing={4} mt={2}>
+                      {youtubeUrl && (
+                        <Button
+                          as={Link}
+                          href={youtubeUrl}
+                          isExternal
+                          colorScheme="red"
+                          leftIcon={<FaYoutube />}
+                          _hover={{
+                            textDecoration: 'none'
+                          }}
+                        >
+                          YouTube
+                        </Button>
+                      )}
+                      {deployLink && (
+                        <Button
+                          as={Link}
+                          href={deployLink}
+                          isExternal
+                          colorScheme="blue"
+                          leftIcon={<FaExternalLinkAlt />}
+                          _hover={{
+                            textDecoration: 'none'
+                          }}
+                        >
+                          作品のリンク
+                        </Button>
+                      )}
+                    </Stack>
+                  </Dialog.Body>
+                </Dialog.Content>
+              </Dialog.Positioner>
+            </Portal>
+          </Dialog.Root>
+        </Box>
       )}
 
       <Stack mt={4} direction={'column'} spacing={2}>
