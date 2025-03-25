@@ -1,4 +1,4 @@
-import ProjectCard from './ProjectCard';
+import ProjectCard from '../components/ProjectCard';
 import '../styles/MemberProject.css'
 import FITTyping from '/imgs/MemberProjectImage/FIT-typing.png';
 import Shateki60s from '/imgs/MemberProjectImage/shateki60s.png';
@@ -16,14 +16,14 @@ const projects = [
   {
     title: 'FIT-typing',
     author: 'Rita',
-    technologies: ['Unity','C#', 'Illustrator'],
+    technologies: ['Unity', 'C#', 'Illustrator'],
     link: 'https://unityroom.com/games/fit-typing',
-    image: FITTyping 
+    image: FITTyping
   },
   {
     title: 'リア充なんか蹴っ飛ばせ',
     author: 'Rita',
-    technologies: ['Unity', 'C#','???'],
+    technologies: ['Unity', 'C#', '???'],
     link: 'https://unityroom.com/games/riajuu_kickaway',
     image: RiajuuKickaway
   },
@@ -53,7 +53,7 @@ const MemberProject = () => {
         />
       ))}
 
-      
+
     </div>
   );
 };

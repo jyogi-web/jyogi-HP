@@ -12,12 +12,12 @@ const Achievement = () => {
       >
         活動実績
       </SectionHeader>
-      
+
       <Box my={6}>
         <Text fontSize="lg" mb={8} textAlign="center">
           プログラミングイベントでも成果など
         </Text>
-        
+
         <Timeline.Root size='xl' variant="subtle" mt={10} mb={10}>
           <Timeline.Item mb={12}>
             <Timeline.Content flex="1" />

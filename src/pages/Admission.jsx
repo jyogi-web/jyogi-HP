@@ -12,14 +12,14 @@ const Admission = () => {
             <p>入部方法は以下の2つの方法があります</p>
             <p>●部室に直接訪問し、入部用紙に記入する</p>
             <p>●ホームページからGoogleformsに記入する</p>
-            
+
             <p>会費は年間3000円（月額250円）となっており、前期の最初の部会時に1年分（3000円）徴収致します。</p>
             <p>なお、サークル活動は基本的に放課後に行われますので、夕方以降に訪問することをお勧めいたします。</p>
             <p>また、オンラインでの入部申し込みも受け付けております。</p>
-            
+
             <a href="https://docs.google.com/forms/d/e/1FAIpQLSd0LpbGEOvlb-g6Awiu664Ik6oQdZymdeDssMeimWZWP85vLQ/viewform?usp=sf_link"><div className='add-form'>Googleforms</div></a>
             {/* Googleformsへのリンクをボタン風にする */}
-            
+
         </div>
     );
 };
