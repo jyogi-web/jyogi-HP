@@ -51,9 +51,6 @@ importers:
       '@vitejs/plugin-react-swc':
         specifier: ^3.5.0
         version: 3.7.0(@swc/helpers@0.5.15)(vite@5.2.12(lightningcss@1.29.2)(sass@1.86.0))
-      daisyui:
-        specifier: ^5.0.9
-        version: 5.0.9
       eslint:
         specifier: ^8.57.0
         version: 8.57.0
@@ -1046,9 +1043,6 @@ packages:
 
   csstype@3.1.3:
     resolution: {integrity: sha512-M1uQkMl8rQK/szD0LNhtqxIPLpimGm8sOBwU7lLnCpSbTyY3yeU1Vc7l4KT5zT4s/yOxHH5O7tIuuLOCnLADRw==}
-
-  daisyui@5.0.9:
-    resolution: {integrity: sha512-RsaehHh45f+0shWgZZaOY09/8eOae2voRsqJCD71j9yrnYgcke0Nj5ys0ZxrW4SPcc4+q96kWyJu0Z8P1zZdoA==}
 
   data-view-buffer@1.0.1:
     resolution: {integrity: sha512-0lht7OugA5x3iJLOWFhWK/5ehONdprk0ISXqVFn/NFrDu+cuc8iADFrGQz5BnRK7LLU3JmkbXSxaqX+/mXYtUA==}
@@ -3207,8 +3201,6 @@ snapshots:
       which: 2.0.2
 
   csstype@3.1.3: {}
-
-  daisyui@5.0.9: {}
 
   data-view-buffer@1.0.1:
     dependencies:
