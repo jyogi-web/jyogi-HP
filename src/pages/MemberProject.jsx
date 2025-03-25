@@ -1,5 +1,5 @@
+import { Box, SimpleGrid, Container, Heading } from '@chakra-ui/react';
 import ProjectCard from '../components/ProjectCard';
-import '../styles/MemberProject.css';
 
 const projects = [
   {
@@ -16,7 +16,7 @@ const projects = [
     title: 'FIT-typing',
     author: 'Rita',
     technologies: ['Unity', 'C#', 'Illustrator'],
-    youtubeUrl: 'https://youtu.be/dQw4w9WgXcQ', // 例としてのURLです、実際のURLに置き換えてください
+    youtubeUrl: 'https://youtu.be/V33WS5e4fNQ',
     description: 'タイピングゲームです。FITの授業や活動に関連した単語を素早くタイプして、スコアを競います。',
     deployLink: 'https://unityroom.com/games/fit-typing',
     githubLink: null,
@@ -26,7 +26,7 @@ const projects = [
     title: 'リア充なんか蹴っ飛ばせ',
     author: 'Rita',
     technologies: ['Unity', 'C#'],
-    youtubeUrl: 'https://youtu.be/dQw4w9WgXcQ', // 例としてのURLです、実際のURLに置き換えてください
+    youtubeUrl: 'https://youtu.be/V33WS5e4fNQ',
     description: 'リア充キャラクターを蹴っ飛ばして距離を競うゲームです。パワーとアングルを調整して、できるだけ遠くまで飛ばしましょう。',
     deployLink: 'https://unityroom.com/games/riajuu_kickaway',
     githubLink: null,
@@ -49,21 +49,30 @@ const projects = [
 
 const MemberProject = () => {
   return (
-    <div className="member-projects">
-      {projects.map((project, index) => (
-        <ProjectCard
-          key={index}
-          title={project.title}
-          author={project.author}
-          technologies={project.technologies}
-          youtubeUrl={project.youtubeUrl}
-          description={project.description}
-          deployLink={project.deployLink}
-          githubLink={project.githubLink}
-          articleLink={project.articleLink}
-        />
-      ))}
-    </div>
+    <Container maxW="container.xl" py={10}>
+      <Heading as="h2" size="xl" mb={8} textAlign="center">
+        部員制作作品
+      </Heading>
+      <SimpleGrid
+        columns={{ base: 1, sm: 2, lg: 3 }}
+        spacing={10}
+        justifyItems="center"
+      >
+        {projects.map((project, index) => (
+          <ProjectCard
+            key={index}
+            title={project.title}
+            author={project.author}
+            technologies={project.technologies}
+            youtubeUrl={project.youtubeUrl}
+            description={project.description}
+            deployLink={project.deployLink}
+            githubLink={project.githubLink}
+            articleLink={project.articleLink}
+          />
+        ))}
+      </SimpleGrid>
+    </Container>
   );
 };
 
