@@ -1,60 +1,139 @@
-import React from 'react'
-import { Container, Box, Text, Image, Flex, Timeline } from "@chakra-ui/react";
-import SectionHeader from "./SectionHeader";
+import React, { useState, useEffect } from 'react'
+import { Container, Box, Text, Timeline } from "@chakra-ui/react"
+import SectionHeader from "./SectionHeader"
 
 const Achievement = () => {
+  const [achievements, setAchievements] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
+  const [error, setError] = useState(null)
+
+  useEffect(() => {
+    const fetchAchievements = async () => {
+      try {
+        const SPREADSHEET_ID = import.meta.env.VITE_SPREADSHEET_ID
+        const API_KEY = import.meta.env.VITE_GOOGLE_SHEETS_API_KEY
+        
+        console.log("SPREADSHEET_ID:", SPREADSHEET_ID)
+        console.log("API_KEY:", API_KEY)
+
+        if (!SPREADSHEET_ID || !API_KEY) {
+          throw new Error('環境変数が設定されていません');
+        }
+        
+        const response = await fetch(
+          `https://sheets.googleapis.com/v4/spreadsheets/${SPREADSHEET_ID}/values/Achievements!A2:C?key=${API_KEY}`
+        )
+
+        if (!response.ok) {
+          throw new Error('データの取得に失敗しました: ' + response.status)
+        }
+
+        const data = await response.json()
+        
+        // データが存在するか確認
+        if (!data.values || !data.values.length) {
+          console.log('データが空です');
+          setAchievements([]);
+          setIsLoading(false);
+          return;
+        }
+        
+        const fetchedAchievements = data.values.map(([date, title, summary]) => ({
+          date,
+          title,
+          summary
+        }))
+
+        console.log('取得したデータ:', fetchedAchievements);
+        setAchievements(fetchedAchievements)
+        setIsLoading(false)
+      } catch (err) {
+        console.error('エラーが発生しました:', err);
+        setError(err.message)
+        setIsLoading(false)
+      }
+    }
+
+    fetchAchievements()
+  }, [])
+
+  // ローディング状態の表示
+  if (isLoading) {
+    return (
+      <Container maxW="75%" py={12} mx="auto">
+        <SectionHeader size="3xl">活動実績</SectionHeader>
+        <Box my={10} textAlign="center">
+          <Text>データを読み込み中...</Text>
+        </Box>
+      </Container>
+    )
+  }
+
+  // エラー状態の表示
+  if (error) {
+    return (
+      <Container maxW="75%" py={12} mx="auto">
+        <SectionHeader size="3xl">活動実績</SectionHeader>
+        <Box my={10} textAlign="center">
+          <Text color="red.500">エラーが発生しました: {error}</Text>
+        </Box>
+      </Container>
+    )
+  }
+
   return (
-    <Container maxW="75%" py={8} mx={"auto"}>
+    <Container maxW="75%" py={12} mx="auto">
       <SectionHeader
-        size="4xl"
-        buttontext={"他の活動を見る"}
-        buttonhref={"/activities"}
+        size="3xl"
+        buttontext="他の活動を見る"
+        buttonhref="/activities"
       >
         活動実績
       </SectionHeader>
 
-      <Box my={6}>
-        <Text fontSize="lg" mb={8} textAlign="center">
-          プログラミングイベントでも成果など
-        </Text>
-
-        <Timeline.Root size='xl' variant="subtle" mt={10} mb={10}>
-          <Timeline.Item mb={12}>
-            <Timeline.Content flex="1" />
-            <Timeline.Connector>
-              <Timeline.Separator />
-              <Timeline.Indicator boxSize={6} />
-            </Timeline.Connector>
-            <Timeline.Content flex="1" pl={6}>
-              <Timeline.Title fontWeight="bold" fontSize="xl" mb={2}>2024年9月 ハッカソン最優秀賞</Timeline.Title>
-              <Text>チーム「じょぎ」がやんばるハックツハッカソンで最優秀賞を受賞しました。</Text>
-            </Timeline.Content>
-          </Timeline.Item>
-
-          <Timeline.Item mb={12}>
-            <Timeline.Content flex="1" alignItems="flex-end" pr={6}>
-              <Timeline.Title fontWeight="bold" fontSize="xl" mb={2}>2024年月 アプリコンテスト入賞</Timeline.Title>
-              <Text textAlign="right">学内アプリコンテストで3名の部員が入賞しました。</Text>
-            </Timeline.Content>
-            <Timeline.Connector>
-              <Timeline.Separator />
-              <Timeline.Indicator boxSize={6} />
-            </Timeline.Connector>
-            <Timeline.Content flex="1" />
-          </Timeline.Item>
-
-          <Timeline.Item mb={12}>
-            <Timeline.Content flex="1" />
-            <Timeline.Connector>
-              <Timeline.Separator />
-              <Timeline.Indicator boxSize={6} />
-            </Timeline.Connector>
-            <Timeline.Content flex="1" pl={6}>
-              <Timeline.Title fontWeight="bold" fontSize="xl" mb={2}>2022年11月 ゲーム展示会</Timeline.Title>
-              <Text>立花祭で部員制作のゲーム5作品を展示し、多くの来場者に楽しんでいただきました。</Text>
-            </Timeline.Content>
-          </Timeline.Item>
-        </Timeline.Root>
+      <Box my={10}>
+        {achievements.length === 0 ? (
+          <Text textAlign="center">表示するデータがありません</Text>
+        ) : (
+          <Timeline.Root 
+            size='md' 
+            variant="subtle" 
+            colorScheme="blue"
+          >
+            {achievements.map((achievement, index) => (
+              <Timeline.Item key={index} mb={10}>
+                <Timeline.Content flex="1" width="20%" textAlign="right" pr={4}>
+                  <Text 
+                    fontSize="sm" 
+                    color="gray.600" 
+                    fontWeight="medium"
+                  >
+                    {achievement.date}
+                  </Text>
+                </Timeline.Content>
+                <Timeline.Connector>
+                  <Timeline.Separator />
+                  <Timeline.Indicator 
+                    boxSize={5} 
+                    bg="blue.500"
+                  />
+                </Timeline.Connector>
+                <Timeline.Content flex="4" pl={6}>
+                  <Timeline.Title 
+                    fontWeight="bold" 
+                    fontSize="xl" 
+                    mb={2}
+                  >
+                    {achievement.title}
+                  </Timeline.Title>
+                  <Text color="gray.700">
+                    {achievement.summary}
+                  </Text>
+                </Timeline.Content>
+              </Timeline.Item>
+            ))}
+          </Timeline.Root>
+        )}
       </Box>
     </Container>
   )
