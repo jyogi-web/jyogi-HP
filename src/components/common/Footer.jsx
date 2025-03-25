@@ -50,7 +50,7 @@ const Footer = () => {
                   <Text fontSize="sm">
                     〒811-0295 福岡県福岡市東区和白東３丁目３０−１
                     <br />
-                    サークル棟3F 322・323
+                    サークル棟3F 321・322
                   </Text>
                 </HStack>
 
