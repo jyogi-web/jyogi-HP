@@ -7,15 +7,21 @@ import Achievement from "@/components/Achievement";
 const Home = () => {
   return (
     <VStack grap="18">
-      <Image src='imgs/header-back-logo.png' />
-      <Center>
-        {/* <TimeLine /> */}
-      </Center>
+      <Image
+        src="imgs/header-back-logo.png"
+        width="100vw"
+        maxWidth="100%"
+        height="auto"
+        objectFit="cover"
+        m={0}
+        p={0}
+      />
+      <Center>{/* <TimeLine /> */}</Center>
       <About />
       <News />
       <Achievement />
     </VStack>
-  ); ï
+  );
 };
 
 export default Home;
