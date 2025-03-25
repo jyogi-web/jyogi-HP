@@ -22,3 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+public/imgs/ignore
+
+# 環境変数
+.env

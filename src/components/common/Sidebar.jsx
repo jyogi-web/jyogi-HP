@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
-import '../styles/Sidebar.css';
+import '../../styles/Sidebar.css';
 
 
 const Sidebar = () => {
-    return(
+    return (
         <div className="sidebar">
             <div className="sidebar-item">
                 <Link to="/home" className="link">トピック</Link>
