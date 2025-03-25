@@ -12,14 +12,14 @@ const Achievement = () => {
       try {
         const SPREADSHEET_ID = import.meta.env.VITE_SPREADSHEET_ID
         const API_KEY = import.meta.env.VITE_GOOGLE_SHEETS_API_KEY
-        
+
         console.log("SPREADSHEET_ID:", SPREADSHEET_ID)
         console.log("API_KEY:", API_KEY)
 
         if (!SPREADSHEET_ID || !API_KEY) {
           throw new Error('環境変数が設定されていません');
         }
-        
+
         const response = await fetch(
           `https://sheets.googleapis.com/v4/spreadsheets/${SPREADSHEET_ID}/values/Achievements!A2:C?key=${API_KEY}`
         )
@@ -29,7 +29,7 @@ const Achievement = () => {
         }
 
         const data = await response.json()
-        
+
         // データが存在するか確認
         if (!data.values || !data.values.length) {
           console.log('データが空です');
@@ -37,7 +37,7 @@ const Achievement = () => {
           setIsLoading(false);
           return;
         }
-        
+
         const fetchedAchievements = data.values.map(([date, title, summary]) => ({
           date,
           title,
@@ -95,17 +95,17 @@ const Achievement = () => {
         {achievements.length === 0 ? (
           <Text textAlign="center">表示するデータがありません</Text>
         ) : (
-          <Timeline.Root 
-            size='md' 
-            variant="subtle" 
+          <Timeline.Root
+            size='md'
+            variant="subtle"
             colorScheme="blue"
           >
             {achievements.map((achievement, index) => (
               <Timeline.Item key={index} mb={10}>
                 <Timeline.Content flex="1" width="20%" textAlign="right" pr={4}>
-                  <Text 
-                    fontSize="sm" 
-                    color="gray.600" 
+                  <Text
+                    fontSize="sm"
+                    color="gray.600"
                     fontWeight="medium"
                   >
                     {achievement.date}
@@ -113,15 +113,15 @@ const Achievement = () => {
                 </Timeline.Content>
                 <Timeline.Connector>
                   <Timeline.Separator />
-                  <Timeline.Indicator 
-                    boxSize={5} 
+                  <Timeline.Indicator
+                    boxSize={5}
                     bg="blue.500"
                   />
                 </Timeline.Connector>
                 <Timeline.Content flex="4" pl={6}>
-                  <Timeline.Title 
-                    fontWeight="bold" 
-                    fontSize="xl" 
+                  <Timeline.Title
+                    fontWeight="bold"
+                    fontSize="xl"
                     mb={2}
                   >
                     {achievement.title}

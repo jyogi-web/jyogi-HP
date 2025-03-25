@@ -1,5 +1,4 @@
 import { Avatar, For, VStack, Text, Center, Image } from "@chakra-ui/react";
-import TimeLine from "@/components/TimeLine";
 import About from "@/pages/About";
 import News from "@/components/News";
 import Achievement from "@/components/Achievement";
@@ -16,7 +15,6 @@ const Home = () => {
         m={0}
         p={0}
       />
-      <Center>{/* <TimeLine /> */}</Center>
       <About />
       <News />
       <Achievement />
