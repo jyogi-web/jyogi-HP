@@ -4,6 +4,7 @@ import Guidelines from "@/pages/Guidelines";
 import Header from "@/components/common/Header";
 import Footer from "@/components/common/Footer";
 import MemberProject from "@/pages/MemberProject";
+import AchievementList from "@/pages/AchievementList";
 import "@/styles/index.css";
 import { Stack, Box } from "@chakra-ui/react";
 import { useColorModeValue } from "@/components/ui/color-mode";
@@ -21,6 +22,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/guidelines" element={<Guidelines />} />
             <Route path="/projects" element={<MemberProject />} />
+            <Route path="/activities" element={<AchievementList/>}/>
           </Routes>
         </Box>
         <Footer />
