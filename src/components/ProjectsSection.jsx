@@ -1,12 +1,17 @@
 import { Container, Box, SimpleGrid, Spinner, Text } from "@chakra-ui/react";
+import { useColorModeValue } from "@/components/ui/color-mode";
 import SectionHeader from "@/components/SectionHeader";
 import ProjectCard from "@/components/ProjectCard";
 import { useProjects } from "@/hooks/useProjects";
 
 const ProjectsSection = () => {
     const { projects, isLoading, error } = useProjects();
-
     const displayProjects = projects.slice(0, 3);
+
+    // ダークモード対応の色設定
+    const textColor = useColorModeValue("gray.700", "gray.300");
+    const errorColor = useColorModeValue("red.500", "red.300");
+    const emptyColor = useColorModeValue("gray.500", "gray.400");
 
     return (
         <Container maxW="75%" py={12} mx="auto">
@@ -22,12 +27,12 @@ const ProjectsSection = () => {
                 {isLoading ? (
                     <Box display="flex" justifyContent="center" alignItems="center" minHeight="200px">
                         <Spinner size="xl" color="blue.500" thickness="4px" />
-                        <Text ml={4} fontSize="xl">データを読み込み中...</Text>
+                        <Text ml={4} fontSize="xl" color={textColor}>データを読み込み中...</Text>
                     </Box>
                 ) : error ? (
-                    <Text color="red.500">データの読み込みに失敗しました: {error}</Text>
+                    <Text color={errorColor}>データの読み込みに失敗しました: {error}</Text>
                 ) : displayProjects.length === 0 ? (
-                    <Text>表示するプロジェクトがありません</Text>
+                    <Text color={emptyColor}>表示するプロジェクトがありません</Text>
                 ) : (
                     <SimpleGrid
                         columns={{ base: 1, sm: 2, lg: 3 }}
