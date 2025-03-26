@@ -1,6 +1,5 @@
 import { Route, Routes } from "react-router-dom";
 import Home from "@/pages/Home";
-import Guidelines from "@/pages/Guidelines";
 import Header from "@/components/common/Header";
 import Footer from "@/components/common/Footer";
 import MemberProject from "@/pages/MemberProject";
@@ -30,7 +29,6 @@ function App() {
         >
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/guidelines" element={<Guidelines />} />
             <Route path="/projects" element={<MemberProject />} />
           </Routes>
         </Box>
