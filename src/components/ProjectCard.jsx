@@ -12,13 +12,15 @@ import {
   Button,
   CloseButton,
   Dialog,
-  Portal
+  Portal,
+  HStack,
+  Flex
 } from '@chakra-ui/react';
-import { FaGithub, FaYoutube, FaExternalLinkAlt, FaNewspaper, FaInfoCircle } from 'react-icons/fa';
+import { FaGithub, FaYoutube, FaExternalLinkAlt, FaNewspaper, FaInfoCircle, FaUser } from 'react-icons/fa';
 
 const ProjectCard = ({
   title,
-  author,
+  authors,
   date,
   technologies,
   youtubeUrl,
@@ -42,6 +44,8 @@ const ProjectCard = ({
   const thumbnailUrl = getYoutubeThumbnail(youtubeUrl);
   const bgColor = 'white';
   const borderColor = 'gray.200';
+
+  const authorsText = Array.isArray(authors) ? authors.join(', ') : authors;
 
   return (
     <Box
@@ -101,14 +105,17 @@ const ProjectCard = ({
       >
         {title}
       </Heading>
-      
+
       <Text color={'gray.500'} fontSize={'sm'} mt={2}>
         {date}
       </Text>
 
-      <Text color={'gray.500'} fontSize={'sm'} mt={2}>
-        作成者: {author}
-      </Text>
+      <HStack mt={2} spacing={1} alignItems="center">
+        <FaUser size="12px" color="#718096" />
+        <Text color={'gray.500'} fontSize={'sm'} noOfLines={1}>
+          {authorsText}
+        </Text>
+      </HStack>
 
       <Stack direction={'row'} mt={2} flexWrap="wrap" gap={1}>
         {technologies.map((tech, index) => (
@@ -129,7 +136,7 @@ const ProjectCard = ({
                 leftIcon={<FaInfoCircle />}
                 width="100%"
               >
-                詳細
+                詳細を見る
               </Button>
             </Dialog.Trigger>
             <Portal>
@@ -143,7 +150,13 @@ const ProjectCard = ({
                     </Dialog.CloseTrigger>
                   </Dialog.Header>
                   <Dialog.Body>
-                    <Text mb={4} fontWeight="bold">作成者: {author}</Text>
+                    <Flex alignItems="center" mb={2}>
+                      <FaUser color="#718096" />
+                      <Text ml={2} fontWeight="bold">作成者: {authorsText}</Text>
+                    </Flex>
+
+                    <Text fontSize="sm" color="gray.500" mb={4}>{date}</Text>
+
                     <Stack direction={'row'} mb={4} flexWrap="wrap" gap={1}>
                       {technologies.map((tech, index) => (
                         <Badge key={index} colorScheme="blue" fontSize={'sm'}>
@@ -271,9 +284,12 @@ const ProjectCard = ({
 
 ProjectCard.propTypes = {
   title: PropTypes.string.isRequired,
-  author: PropTypes.string.isRequired,
-  date: PropTypes.string.isRequired,
-  technologies: PropTypes.arrayOf(PropTypes.string).isRequired,
+  authors: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.arrayOf(PropTypes.string)
+  ]).isRequired,
+  date: PropTypes.string,
+  technologies: PropTypes.arrayOf(PropTypes.string),
   youtubeUrl: PropTypes.string,
   description: PropTypes.string,
   deployLink: PropTypes.string,
