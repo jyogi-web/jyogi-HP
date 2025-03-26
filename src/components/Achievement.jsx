@@ -54,7 +54,7 @@ const Achievement = () => {
         }))
 
         console.log('取得したデータ:', fetchedAchievements);
-        setAchievements(fetchedAchievements)
+        setAchievements(fetchedAchievements.reverse().slice(0, 5));
         setIsLoading(false)
       } catch (err) {
         console.error('エラーが発生しました:', err);
@@ -104,45 +104,61 @@ const Achievement = () => {
         {achievements.length === 0 ? (
           <Text textAlign="center" color={emptyDataColor}>表示するデータがありません</Text>
         ) : (
-          <Timeline.Root
-            size='md'
-            variant="subtle"
-            colorScheme="blue"
-          >
-            {achievements.map((achievement, index) => (
-              <Timeline.Item key={index} mb={10}>
-                <Timeline.Content flex="1" width="20%" textAlign="right" pr={4}>
-                  <Text
-                    fontSize="sm"
-                    color={dateColor}
-                    fontWeight="medium"
+          <>
+            <Timeline.Root
+              size='md'
+              variant="subtle"
+              colorScheme="blue"
+              >
+              {achievements.map((achievement, index) => (
+                <Timeline.Item key={index} mb={10}>
+                  <Timeline.Content flex="1" width="20%" textAlign="right" pr={4}>
+                    <Text
+                      fontSize="sm"
+                      color={dateColor}
+                      fontWeight="medium"
+                      >
+                      {achievement.date}
+                    </Text>
+                  </Timeline.Content>
+                  <Timeline.Connector>
+                    <Timeline.Separator />
+                    <Timeline.Indicator
+                      boxSize={5}
+                      bg="blue.500"
+                      />
+                  </Timeline.Connector>
+                  <Timeline.Content flex="4" pl={6}>
+                    <Timeline.Title
+                      fontWeight="bold"
+                      fontSize="xl"
+                      mb={2}
+                      color={titleColor}
                   >
-                    {achievement.date}
-                  </Text>
-                </Timeline.Content>
-                <Timeline.Connector>
-                  <Timeline.Separator />
-                  <Timeline.Indicator
-                    boxSize={5}
-                    bg="blue.500"
-                  />
-                </Timeline.Connector>
-                <Timeline.Content flex="4" pl={6}>
-                  <Timeline.Title
-                    fontWeight="bold"
-                    fontSize="xl"
-                    mb={2}
-                    color={titleColor}
-                  >
-                    {achievement.title}
-                  </Timeline.Title>
-                  <Text color={summaryColor}>
-                    {achievement.summary}
-                  </Text>
-                </Timeline.Content>
-              </Timeline.Item>
-            ))}
-          </Timeline.Root>
+                      {achievement.title}
+                    </Timeline.Title>
+                    <Text color={summaryColor}>
+                      {achievement.summary}
+                    </Text>
+                  </Timeline.Content>
+                </Timeline.Item>
+              ))}
+            </Timeline.Root>
+            <Box textAlign="center" mt={4} color="gray.500">
+              <Text fontSize="sm" fontStyle="italic" color={summaryColor}>
+                ・
+              </Text>
+              <Text fontSize="sm" fontStyle="italic" color={summaryColor}>
+                ・
+              </Text>
+              <Text fontSize="sm" fontStyle="italic" color={summaryColor}>
+                ・
+              </Text>
+              <Text fontSize="sm" marginTop={8} color={summaryColor}>
+                and more
+              </Text>
+            </Box>
+          </>
         )}
       </Box>
     </Container>
