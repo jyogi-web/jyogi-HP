@@ -11,8 +11,9 @@ const NewsCard = ({ date, imagesrc, description }) => {
   return (
     <Box
       flex="1"
+      w={{ base: "100%", md: "auto" }}
       maxW={{ base: "100%", md: "45%" }}
-      mx={2}
+      mx={{ base: 0, md: 2 }}
       mb={4}
       p={3}
       borderRadius="md"

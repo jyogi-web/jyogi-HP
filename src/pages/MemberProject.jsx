@@ -69,9 +69,9 @@ const MemberProject = () => {
       </Heading>
       <SimpleGrid
         columns={{ base: 1, sm: 2, lg: 3 }}
-        spacing={{ base: 24, md: 16 }}
+        spacing={{ base: 8, sm: 12, md: 16 }}
         justifyItems="center"
-        px={{ base: 4, md: 8 }}
+        px={{ base: 2, md: 8 }}
       >
         {projects.map((project, index) => (
           <ProjectCard

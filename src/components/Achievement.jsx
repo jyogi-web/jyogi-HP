@@ -109,35 +109,46 @@ const Achievement = () => {
               size='md'
               variant="subtle"
               colorScheme="blue"
-              >
+            >
               {achievements.map((achievement, index) => (
                 <Timeline.Item key={index} mb={10}>
-                  <Timeline.Content flex="1" width="20%" textAlign="right" pr={4}>
+                  <Timeline.Content
+                    flex="1"
+                    width={{ base: "30%", md: "20%" }}
+                    textAlign={{ base: "left", md: "right" }}
+                    pr={{ base: 2, md: 4 }}
+                  >
                     <Text
-                      fontSize="sm"
+                      fontSize={{ base: "xs", md: "sm" }}
                       color={dateColor}
                       fontWeight="medium"
-                      >
+                    >
                       {achievement.date}
                     </Text>
                   </Timeline.Content>
                   <Timeline.Connector>
                     <Timeline.Separator />
                     <Timeline.Indicator
-                      boxSize={5}
+                      boxSize={{ base: 4, md: 5 }}
                       bg="blue.500"
-                      />
+                    />
                   </Timeline.Connector>
-                  <Timeline.Content flex="4" pl={6}>
+                  <Timeline.Content
+                    flex="4"
+                    pl={{ base: 4, md: 6 }}
+                  >
                     <Timeline.Title
                       fontWeight="bold"
-                      fontSize="xl"
+                      fontSize={{ base: "lg", md: "xl" }}
                       mb={2}
                       color={titleColor}
-                  >
+                    >
                       {achievement.title}
                     </Timeline.Title>
-                    <Text color={summaryColor}>
+                    <Text
+                      color={summaryColor}
+                      fontSize={{ base: "sm", md: "md" }}
+                    >
                       {achievement.summary}
                     </Text>
                   </Timeline.Content>
