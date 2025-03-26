@@ -15,7 +15,7 @@ const Home = () => {
       />
       <VStack grap="18">
         <Image
-          src="imgs/jyogi.png"
+          src="imgs/header-back-logo.png"
           width="100vw"
           maxWidth="100%"
           height="auto"

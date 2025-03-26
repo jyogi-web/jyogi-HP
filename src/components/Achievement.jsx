@@ -2,11 +2,10 @@ import React, { useState, useEffect } from 'react'
 import { Container, Box, Text, Timeline } from "@chakra-ui/react"
 import { useColorModeValue } from "@/components/ui/color-mode";
 import SectionHeader from "./SectionHeader"
+import useAchievement from '@/hooks/useAchievement';
 
 const Achievement = () => {
-  const [achievements, setAchievements] = useState([])
-  const [isLoading, setIsLoading] = useState(true)
-  const [error, setError] = useState(null)
+  const { achievements, isLoading, error } = useAchievement()
 
   // ダークモード対応の色設定
   const dateColor = useColorModeValue("gray.600", "gray.400")
@@ -16,55 +15,6 @@ const Achievement = () => {
   const loadingColor = useColorModeValue("gray.600", "gray.400")
   const emptyDataColor = useColorModeValue("gray.600", "gray.400")
 
-  useEffect(() => {
-    const fetchAchievements = async () => {
-      try {
-        const SPREADSHEET_ID = import.meta.env.VITE_SPREADSHEET_ID
-        const API_KEY = import.meta.env.VITE_GOOGLE_SHEETS_API_KEY
-
-        console.log("SPREADSHEET_ID:", SPREADSHEET_ID)
-        console.log("API_KEY:", API_KEY)
-
-        if (!SPREADSHEET_ID || !API_KEY) {
-          throw new Error('環境変数が設定されていません');
-        }
-
-        const response = await fetch(
-          `https://sheets.googleapis.com/v4/spreadsheets/${SPREADSHEET_ID}/values/Achievements!A2:C?key=${API_KEY}`
-        )
-
-        if (!response.ok) {
-          throw new Error('データの取得に失敗しました: ' + response.status)
-        }
-
-        const data = await response.json()
-
-        // データが存在するか確認
-        if (!data.values || !data.values.length) {
-          console.log('データが空です');
-          setAchievements([]);
-          setIsLoading(false);
-          return;
-        }
-
-        const fetchedAchievements = data.values.map(([date, title, summary]) => ({
-          date,
-          title,
-          summary
-        }))
-
-        console.log('取得したデータ:', fetchedAchievements);
-        setAchievements(fetchedAchievements.reverse().slice(0, 5));
-        setIsLoading(false)
-      } catch (err) {
-        console.error('エラーが発生しました:', err);
-        setError(err.message)
-        setIsLoading(false)
-      }
-    }
-
-    fetchAchievements()
-  }, [])
 
   // ローディング状態の表示
   if (isLoading) {
@@ -110,7 +60,7 @@ const Achievement = () => {
               variant="subtle"
               colorScheme="blue"
             >
-              {achievements.map((achievement, index) => (
+              {achievements.slice(0, 5).map((achievement, index) => (
                 <Timeline.Item key={index} mb={10}>
                   <Timeline.Content
                     flex="1"
