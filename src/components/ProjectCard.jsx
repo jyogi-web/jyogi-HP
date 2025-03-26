@@ -19,6 +19,7 @@ import { FaGithub, FaYoutube, FaExternalLinkAlt, FaNewspaper, FaInfoCircle } fro
 const ProjectCard = ({
   title,
   author,
+  date,
   technologies,
   youtubeUrl,
   description,
@@ -100,6 +101,10 @@ const ProjectCard = ({
       >
         {title}
       </Heading>
+      
+      <Text color={'gray.500'} fontSize={'sm'} mt={2}>
+        {date}
+      </Text>
 
       <Text color={'gray.500'} fontSize={'sm'} mt={2}>
         作成者: {author}
@@ -267,6 +272,7 @@ const ProjectCard = ({
 ProjectCard.propTypes = {
   title: PropTypes.string.isRequired,
   author: PropTypes.string.isRequired,
+  date: PropTypes.string.isRequired,
   technologies: PropTypes.arrayOf(PropTypes.string).isRequired,
   youtubeUrl: PropTypes.string,
   description: PropTypes.string,
