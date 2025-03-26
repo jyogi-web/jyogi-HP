@@ -57,8 +57,18 @@ export const useProjects = () => {
                     articleLink: articleLink || null
                 })).filter(project => project.title && project.authors.length > 0);
 
-                console.log('取得したプロジェクトデータ:', fetchedProjects);
-                setProjects(fetchedProjects);
+                const sortedProjects = fetchedProjects.sort((a, b) => {
+                    if (!a.date) return 1;
+                    if (!b.date) return -1;
+
+                    const dateA = new Date(a.date.replace(/(\d+)\/(\d+)\/(\d+)/, '$1-$2-$3'));
+                    const dateB = new Date(b.date.replace(/(\d+)\/(\d+)\/(\d+)/, '$1-$2-$3'));
+
+                    return dateB - dateA;
+                });
+
+                console.log('取得したプロジェクトデータ:', sortedProjects);
+                setProjects(sortedProjects);
                 setIsLoading(false);
             } catch (err) {
                 console.error('エラーが発生しました:', err);
