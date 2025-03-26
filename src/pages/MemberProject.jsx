@@ -1,6 +1,6 @@
 "use client"
 
-import { Box, SimpleGrid, Container, Heading, Text, Spinner, Alert, AlertIcon, AlertTitle, AlertDescription } from "@chakra-ui/react";
+import { Box, SimpleGrid, Container, Heading, Text, Spinner, Alert } from "@chakra-ui/react";
 import ProjectCard from "../components/ProjectCard";
 import { useProjects } from "../hooks/useProjects";
 
@@ -30,13 +30,13 @@ const MemberProject = () => {
           部員制作作品
         </Heading>
         <Alert status="error" variant="subtle" flexDirection="column" alignItems="center" justifyContent="center" textAlign="center" rounded="md" py={6}>
-          <AlertIcon boxSize="40px" mr={0} />
-          <AlertTitle mt={4} mb={1} fontSize="lg">
+          <Alert.Icon boxSize="40px" mr={0} />
+          <Alert.Title mt={4} mb={1} fontSize="lg">
             データの読み込みに失敗しました
-          </AlertTitle>
-          <AlertDescription maxWidth="sm">
+          </Alert.Title>
+          <Alert.Description maxWidth="sm">
             {error}
-          </AlertDescription>
+          </Alert.Description>
         </Alert>
       </Container>
     );
