@@ -17,7 +17,7 @@ const MemberProject = () => {
   return (
     <>
       <Seo
-        title="部員作品 | 情報技術研究部 JYOGI"
+        title="部員作品 | 情報技術研究部 じょぎ"
         description="福岡工業大学情報技術研究部（じょぎ）の部員による制作作品を紹介しています。ウェブアプリ、ゲーム開発など様々な作品があります。"
         image="/imgs/jyogi.png"
       />
