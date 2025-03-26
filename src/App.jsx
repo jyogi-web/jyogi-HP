@@ -1,29 +1,31 @@
 import { Route, Routes } from "react-router-dom";
 import Home from "@/pages/Home";
 import Guidelines from "@/pages/Guidelines";
-import Admission from "@/pages/Admission";
-import Members from "@/pages/Members";
 import Header from "@/components/common/Header";
 import Footer from "@/components/common/Footer";
 import MemberProject from "@/pages/MemberProject";
 import "@/styles/index.css";
-import { Stack } from "@chakra-ui/react";
+import { Stack, Box } from "@chakra-ui/react";
+import { useColorModeValue } from "@/components/ui/color-mode";
 
 function App() {
+  const bgColor = useColorModeValue("white", "gray.900");
+  const textColor = useColorModeValue("gray.900", "white");
+
   return (
-    <Stack>
-      <Header />
-      <div>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/guidelines" element={<Guidelines />} />
-          <Route path="/admission" element={<Admission />} />
-          <Route path="/members" element={<Members />} />
-          <Route path="/projects" element={<MemberProject />} />
-        </Routes>
-      </div>
-      <Footer />
-    </Stack>
+    <Box bg={bgColor} color={textColor} minH="100vh">
+      <Stack spacing={0}>
+        <Header />
+        <Box as="main">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/guidelines" element={<Guidelines />} />
+            <Route path="/projects" element={<MemberProject />} />
+          </Routes>
+        </Box>
+        <Footer />
+      </Stack>
+    </Box>
   );
 }
 

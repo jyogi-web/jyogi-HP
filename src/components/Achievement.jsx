@@ -1,11 +1,20 @@
 import React, { useState, useEffect } from 'react'
 import { Container, Box, Text, Timeline } from "@chakra-ui/react"
+import { useColorModeValue } from "@/components/ui/color-mode";
 import SectionHeader from "./SectionHeader"
 
 const Achievement = () => {
   const [achievements, setAchievements] = useState([])
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState(null)
+
+  // ダークモード対応の色設定
+  const dateColor = useColorModeValue("gray.600", "gray.400")
+  const titleColor = useColorModeValue("black", "white")
+  const summaryColor = useColorModeValue("gray.700", "gray.300")
+  const errorColor = useColorModeValue("red.500", "red.300")
+  const loadingColor = useColorModeValue("gray.600", "gray.400")
+  const emptyDataColor = useColorModeValue("gray.600", "gray.400")
 
   useEffect(() => {
     const fetchAchievements = async () => {
@@ -63,7 +72,7 @@ const Achievement = () => {
       <Container maxW="75%" py={12} mx="auto">
         <SectionHeader size="3xl">活動実績</SectionHeader>
         <Box my={10} textAlign="center">
-          <Text>データを読み込み中...</Text>
+          <Text color={loadingColor}>データを読み込み中...</Text>
         </Box>
       </Container>
     )
@@ -75,7 +84,7 @@ const Achievement = () => {
       <Container maxW="75%" py={12} mx="auto">
         <SectionHeader size="3xl">活動実績</SectionHeader>
         <Box my={10} textAlign="center">
-          <Text color="red.500">エラーが発生しました: {error}</Text>
+          <Text color={errorColor}>エラーが発生しました: {error}</Text>
         </Box>
       </Container>
     )
@@ -93,7 +102,7 @@ const Achievement = () => {
 
       <Box my={10}>
         {achievements.length === 0 ? (
-          <Text textAlign="center">表示するデータがありません</Text>
+          <Text textAlign="center" color={emptyDataColor}>表示するデータがありません</Text>
         ) : (
           <>
             <Timeline.Root
@@ -106,7 +115,7 @@ const Achievement = () => {
                   <Timeline.Content flex="1" width="20%" textAlign="right" pr={4}>
                     <Text
                       fontSize="sm"
-                      color="gray.600"
+                      color={dateColor}
                       fontWeight="medium"
                       >
                       {achievement.date}
@@ -124,10 +133,11 @@ const Achievement = () => {
                       fontWeight="bold"
                       fontSize="xl"
                       mb={2}
-                      >
+                      color={titleColor}
+                  >
                       {achievement.title}
                     </Timeline.Title>
-                    <Text color="gray.700">
+                    <Text color={summaryColor}>
                       {achievement.summary}
                     </Text>
                   </Timeline.Content>
@@ -135,16 +145,16 @@ const Achievement = () => {
               ))}
             </Timeline.Root>
             <Box textAlign="center" mt={4} color="gray.500">
-              <Text fontSize="sm" fontStyle="italic">
+              <Text fontSize="sm" fontStyle="italic" color={summaryColor}>
                 ・
               </Text>
-              <Text fontSize="sm" fontStyle="italic">
+              <Text fontSize="sm" fontStyle="italic" color={summaryColor}>
                 ・
               </Text>
-              <Text fontSize="sm" fontStyle="italic">
+              <Text fontSize="sm" fontStyle="italic" color={summaryColor}>
                 ・
               </Text>
-              <Text fontSize="sm" marginTop={8}>
+              <Text fontSize="sm" marginTop={8} color={summaryColor}>
                 and more
               </Text>
             </Box>

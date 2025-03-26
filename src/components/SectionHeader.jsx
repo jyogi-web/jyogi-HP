@@ -1,5 +1,6 @@
 import React from "react";
 import { Container, Heading, Button, Flex, Box } from "@chakra-ui/react";
+import { useColorModeValue } from "@/components/ui/color-mode";
 import { Link } from "react-router-dom";
 /*
  * Containerで囲った中で使わないと横線が出ない？
@@ -11,10 +12,13 @@ import { Link } from "react-router-dom";
  */
 
 const SectionHeader = ({ children, buttontext, buttonhref, size = "2xl" }) => {
+  const lineColor = useColorModeValue("gray.200", "gray.600");
+  const headingColor = useColorModeValue("gray.800", "white");
+
   return (
     <Container maxW="100%" py={8} mx={"auto"}>
       <Flex align="center" width="100%" mb={4}>
-        <Heading size={size} mr={6}>
+        <Heading size={size} mr={6} color={headingColor}>
           {children}
         </Heading>
 
@@ -28,7 +32,7 @@ const SectionHeader = ({ children, buttontext, buttonhref, size = "2xl" }) => {
           </Box>
         )}
 
-        <Box flex="1" height="2px" bg="gray.200" />
+        <Box flex="1" height="2px" bg={lineColor} />
       </Flex>
     </Container>
   );

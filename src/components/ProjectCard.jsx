@@ -12,13 +12,15 @@ import {
   Button,
   CloseButton,
   Dialog,
-  Portal
+  Portal,
+  HStack,
+  Flex,
 } from '@chakra-ui/react';
-import { FaGithub, FaYoutube, FaExternalLinkAlt, FaNewspaper, FaInfoCircle } from 'react-icons/fa';
-
+import { FaGithub, FaYoutube, FaExternalLinkAlt, FaNewspaper, FaInfoCircle, FaUser } from 'react-icons/fa';
+import { useColorModeValue } from "@/components/ui/color-mode";
 const ProjectCard = ({
   title,
-  author,
+  authors,
   date,
   technologies,
   youtubeUrl,
@@ -40,13 +42,20 @@ const ProjectCard = ({
   };
 
   const thumbnailUrl = getYoutubeThumbnail(youtubeUrl);
-  const bgColor = 'white';
-  const borderColor = 'gray.200';
+  const bgColor = useColorModeValue('white', 'gray.700');
+  const borderColor = useColorModeValue('gray.200', 'gray.600');
+  const textColor = useColorModeValue('gray.500', 'gray.300');
+  const headingColor = useColorModeValue('gray.800', 'white');
+  const authorIconColor = useColorModeValue('#718096', '#A0AEC0');
+  const noThumbnailBg = useColorModeValue('gray.100', 'gray.600');
+  const noThumbnailText = useColorModeValue('gray.500', 'gray.300');
+
+  const authorsText = Array.isArray(authors) ? authors.join(', ') : authors;
 
   return (
     <Box
-      maxW={'350px'}
-      w={'full'}
+      maxW="320px"
+      w="100%"
       bg={bgColor}
       boxShadow={'md'}
       rounded={'lg'}
@@ -59,6 +68,8 @@ const ProjectCard = ({
         transform: 'translateY(-5px)',
         boxShadow: 'lg',
       }}
+      mx="auto"
+      my={4}
     >
       {thumbnailUrl ? (
         <Box
@@ -80,14 +91,14 @@ const ProjectCard = ({
       ) : (
         <Box
           h={'200px'}
-          bg={'gray.100'}
+          bg={noThumbnailBg}
           mt={-6}
           mx={-6}
           mb={6}
           display="flex"
           alignItems="center"
           justifyContent="center"
-          color="gray.500"
+          color={noThumbnailText}
         >
           No thumbnail available
         </Box>
@@ -98,17 +109,21 @@ const ProjectCard = ({
         fontWeight={500}
         fontFamily={'body'}
         noOfLines={1}
+        color={headingColor}
       >
         {title}
       </Heading>
-      
-      <Text color={'gray.500'} fontSize={'sm'} mt={2}>
+
+      <Text color={textColor} fontSize={'sm'} mt={2}>
         {date}
       </Text>
 
-      <Text color={'gray.500'} fontSize={'sm'} mt={2}>
-        作成者: {author}
-      </Text>
+      <HStack mt={2} spacing={1} alignItems="center">
+        <FaUser size="12px" color={authorIconColor} />
+        <Text color={textColor} fontSize={'sm'} noOfLines={1}>
+          {authorsText}
+        </Text>
+      </HStack>
 
       <Stack direction={'row'} mt={2} flexWrap="wrap" gap={1}>
         {technologies.map((tech, index) => (
@@ -129,21 +144,27 @@ const ProjectCard = ({
                 leftIcon={<FaInfoCircle />}
                 width="100%"
               >
-                詳細
+                詳細を見る
               </Button>
             </Dialog.Trigger>
             <Portal>
               <Dialog.Backdrop />
               <Dialog.Positioner>
-                <Dialog.Content>
+                <Dialog.Content bg={bgColor}>
                   <Dialog.Header>
-                    <Dialog.Title>{title}</Dialog.Title>
+                    <Dialog.Title color={headingColor}>{title}</Dialog.Title>
                     <Dialog.CloseTrigger asChild>
                       <CloseButton size="sm" />
                     </Dialog.CloseTrigger>
                   </Dialog.Header>
                   <Dialog.Body>
-                    <Text mb={4} fontWeight="bold">作成者: {author}</Text>
+                    <Flex alignItems="center" mb={2}>
+                      <FaUser color={authorIconColor} />
+                      <Text ml={2} fontWeight="bold" color={headingColor}>作成者: {authorsText}</Text>
+                    </Flex>
+
+                    <Text fontSize="sm" color={textColor} mb={4}>{date}</Text>
+
                     <Stack direction={'row'} mb={4} flexWrap="wrap" gap={1}>
                       {technologies.map((tech, index) => (
                         <Badge key={index} colorScheme="blue" fontSize={'sm'}>
@@ -151,7 +172,7 @@ const ProjectCard = ({
                         </Badge>
                       ))}
                     </Stack>
-                    <Text mb={4}>{description}</Text>
+                    <Text mb={4} color={headingColor}>{description}</Text>
                     {thumbnailUrl && (
                       <Box maxW="100%" mb={4}>
                         <Image
@@ -162,7 +183,7 @@ const ProjectCard = ({
                         />
                       </Box>
                     )}
-                    <Stack direction="row" spacing={4} mt={2}>
+                    <Stack direction={{ base: 'column', md: 'row' }} spacing={4} mt={2}>
                       {youtubeUrl && (
                         <Button
                           as={Link}
@@ -173,6 +194,7 @@ const ProjectCard = ({
                           _hover={{
                             textDecoration: 'none'
                           }}
+                          w={{ base: 'full', md: 'auto' }}
                         >
                           YouTube
                         </Button>
@@ -187,6 +209,7 @@ const ProjectCard = ({
                           _hover={{
                             textDecoration: 'none'
                           }}
+                          w={{ base: 'full', md: 'auto' }}
                         >
                           作品のリンク
                         </Button>
@@ -271,9 +294,12 @@ const ProjectCard = ({
 
 ProjectCard.propTypes = {
   title: PropTypes.string.isRequired,
-  author: PropTypes.string.isRequired,
-  date: PropTypes.string.isRequired,
-  technologies: PropTypes.arrayOf(PropTypes.string).isRequired,
+  authors: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.arrayOf(PropTypes.string)
+  ]).isRequired,
+  date: PropTypes.string,
+  technologies: PropTypes.arrayOf(PropTypes.string),
   youtubeUrl: PropTypes.string,
   description: PropTypes.string,
   deployLink: PropTypes.string,
