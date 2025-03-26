@@ -7,7 +7,12 @@ const News = () => {
   return (
     <Container maxW="75%" py={8} mx={"auto"}>
       <SectionHeader size="4xl">最近のニュース</SectionHeader>
-      <Flex>
+      <Flex
+        direction={{ base: "column", md: "row" }}
+        gap={{ base: 4, md: 2 }}
+        justify="space-between"
+        align="stretch"
+      >
         <NewsCard
           date="2024/09/18"
           imagesrc="imgs/ignore/fusic.jpg"

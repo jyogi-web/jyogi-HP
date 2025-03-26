@@ -1,6 +1,5 @@
 import { Route, Routes } from "react-router-dom";
 import Home from "@/pages/Home";
-import Guidelines from "@/pages/Guidelines";
 import Header from "@/components/common/Header";
 import Footer from "@/components/common/Footer";
 import MemberProject from "@/pages/MemberProject";
@@ -14,13 +13,23 @@ function App() {
   const textColor = useColorModeValue("gray.900", "white");
 
   return (
-    <Box bg={bgColor} color={textColor} minH="100vh">
+    <Box
+      bg={bgColor}
+      color={textColor}
+      minH="100vh"
+      fontSize={{ base: "sm", md: "md" }}
+    >
       <Stack spacing={0}>
         <Header />
-        <Box as="main">
+        <Box
+          as="main"
+          width="100%"
+          maxWidth="100vw"
+          overflowX="hidden"
+          pb={{ base: 4, md: 8 }}
+        >
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/guidelines" element={<Guidelines />} />
             <Route path="/projects" element={<MemberProject />} />
             <Route path="/activities" element={<AchievementList/>}/>
           </Routes>

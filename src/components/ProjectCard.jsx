@@ -54,22 +54,22 @@ const ProjectCard = ({
 
   return (
     <Box
-      maxW="320px"
+      maxW={{ base: "100%", sm: "320px" }}
       w="100%"
       bg={bgColor}
       boxShadow={'md'}
       rounded={'lg'}
-      p={6}
+      p={{ base: 4, md: 6 }}
       overflow={'hidden'}
       borderWidth="1px"
       borderColor={borderColor}
       transition="all 0.3s"
       _hover={{
-        transform: 'translateY(-5px)',
-        boxShadow: 'lg',
+        transform: { base: 'none', md: 'translateY(-5px)' },
+        boxShadow: { base: 'md', md: 'lg' },
       }}
       mx="auto"
-      my={4}
+      my={{ base: 3, md: 4 }}
     >
       {thumbnailUrl ? (
         <Box
