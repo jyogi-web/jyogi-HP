@@ -11,16 +11,13 @@ import {
     Button,
     SimpleGrid,
 } from "@chakra-ui/react";
+import { useColorModeValue } from "@/components/ui/color-mode";
 import {
     FaTwitter,
     FaGithub,
     FaEnvelope,
     FaMapMarkerAlt,
-    FaExternalLinkAlt,
-    FaHome,
-    FaUsers,
-    FaCalendarAlt,
-    FaCode,
+    FaExternalLinkAlt
 } from "react-icons/fa";
 import React from "react";
 
@@ -28,8 +25,15 @@ const Footer = () => {
     // Googleフォームの埋め込みURL
     const googleFormUrl = "https://forms.gle/oMww1rnix5eqt8bAA";
 
+    const bgColor = useColorModeValue("gray.700", "gray.900");
+    const textColor = "white";
+    const borderColor = useColorModeValue("whiteAlpha.300", "whiteAlpha.200");
+    const boxBgColor = useColorModeValue("whiteAlpha.100", "whiteAlpha.50");
+    const accentColor = "blue.300";
+    const copyrightColor = useColorModeValue("gray.400", "gray.500");
+
     return (
-        <Box as="footer" bg="gray.700" color="white" py={10}>
+        <Box as="footer" bg={bgColor} color={textColor} py={10}>
             <Container maxW="container.xl">
                 <Flex
                     direction={{ base: "column", md: "row" }}
@@ -46,7 +50,7 @@ const Footer = () => {
                                 </Heading>
 
                                 <HStack spacing={2} align="flex-start">
-                                    <Icon as={FaMapMarkerAlt} color="blue.300" mt={1} />
+                                    <Icon as={FaMapMarkerAlt} color={accentColor} mt={1} />
                                     <Text fontSize="sm">
                                         〒811-0295 福岡県福岡市東区和白東３丁目３０−１
                                         <br />
@@ -55,45 +59,10 @@ const Footer = () => {
                                 </HStack>
 
                                 <HStack spacing={2}>
-                                    <Icon as={FaEnvelope} color="blue.300" />
+                                    <Icon as={FaEnvelope} color={accentColor} />
                                     <Text fontSize="sm">jyogi@bene.fit.ac.jp</Text>
                                 </HStack>
                             </VStack>
-
-                            {/* リンク集 */}
-                            {/* <VStack align="flex-start" spacing={4}>
-                    <Heading as="h3" size="md" fontWeight="bold" mb={2}>
-                        リンク
-                    </Heading>
-                    
-                    <Link href="/" _hover={{ color: "blue.300" }}>
-                        <HStack spacing={2}>
-                            <Icon as={FaHome} color="blue.300" />
-                            <Text fontSize="sm">ホーム</Text>
-                        </HStack>
-                    </Link>
-                    
-                    <Link href="/about" _hover={{ color: "blue.300" }}>
-                        <HStack spacing={2}>
-                            <Icon as={FaUsers} color="blue.300" />
-                            <Text fontSize="sm">部活について</Text>
-                        </HStack>
-                    </Link>
-                    
-                    <Link href="/activities" _hover={{ color: "blue.300" }}>
-                        <HStack spacing={2}>
-                            <Icon as={FaCalendarAlt} color="blue.300" />
-                            <Text fontSize="sm">活動内容</Text>
-                        </HStack>
-                    </Link>
-                    
-                    <Link href="/projects" _hover={{ color: "blue.300" }}>
-                        <HStack spacing={2}>
-                            <Icon as={FaCode} color="blue.300" />
-                            <Text fontSize="sm">作品紹介</Text>
-                        </HStack>
-                    </Link>
-                </VStack> */}
                         </SimpleGrid>
 
                         {/* SNSリンク */}
@@ -105,9 +74,9 @@ const Footer = () => {
                             <Link href="https://x.com/jyogi_pr" isExternal>
                                 <HStack
                                     spacing={1}
-                                    color="white"
+                                    color={textColor}
                                     _hover={{
-                                        color: "blue.300",
+                                        color: accentColor,
                                         transform: "translateY(-2px)",
                                         transition: "all 0.2s ease",
                                     }}
@@ -120,9 +89,9 @@ const Footer = () => {
                             <Link href="https://github.com/jyogi-web" isExternal>
                                 <HStack
                                     spacing={1}
-                                    color="white"
+                                    color={textColor}
                                     _hover={{
-                                        color: "blue.300",
+                                        color: accentColor,
                                         transform: "translateY(-2px)",
                                         transition: "all 0.2s ease",
                                     }}
@@ -139,14 +108,14 @@ const Footer = () => {
                     <Box
                         flex={1}
                         p={6}
-                        bg="whiteAlpha.100"
+                        bg={boxBgColor}
                         borderRadius="md"
                         display="flex"
                         flexDirection="column"
                         justifyContent="center"
                     >
                         <VStack align="center" spacing={6}>
-                            <Heading as="h3" size="md" color="blue.300" textAlign="center">
+                            <Heading as="h3" size="md" color={accentColor} textAlign="center">
                                 興味を持ったら入部申し込み！
                             </Heading>
 
@@ -164,10 +133,10 @@ const Footer = () => {
                                 <Button
                                     rightIcon={<FaExternalLinkAlt />}
                                     colorScheme="blue"
-                                    size="lg"
+                                    size={{ base: "md", md: "lg" }}
                                     w="100%"
-                                    height="60px"
-                                    fontSize="md"
+                                    height={{ base: "50px", md: "60px" }}
+                                    fontSize={{ base: "sm", md: "md" }}
                                     fontWeight="bold"
                                     shadow="md"
                                     _hover={{
@@ -183,8 +152,8 @@ const Footer = () => {
                     </Box>
                 </Flex>
 
-                <Box pt={8} mt={6} borderTopWidth="1px" borderColor="whiteAlpha.300">
-                    <Text fontSize="sm" color="gray.400" textAlign="center">
+                <Box pt={8} mt={6} borderTopWidth="1px" borderColor={borderColor}>
+                    <Text fontSize="sm" color={copyrightColor} textAlign="center">
                         ©2024 情報技術研究部. All rights reserved.
                     </Text>
                 </Box>

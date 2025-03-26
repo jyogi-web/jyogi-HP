@@ -14,10 +14,10 @@ import {
   Dialog,
   Portal,
   HStack,
-  Flex
+  Flex,
 } from '@chakra-ui/react';
 import { FaGithub, FaYoutube, FaExternalLinkAlt, FaNewspaper, FaInfoCircle, FaUser } from 'react-icons/fa';
-
+import { useColorModeValue } from "@/components/ui/color-mode";
 const ProjectCard = ({
   title,
   authors,
@@ -42,29 +42,34 @@ const ProjectCard = ({
   };
 
   const thumbnailUrl = getYoutubeThumbnail(youtubeUrl);
-  const bgColor = 'white';
-  const borderColor = 'gray.200';
+  const bgColor = useColorModeValue('white', 'gray.700');
+  const borderColor = useColorModeValue('gray.200', 'gray.600');
+  const textColor = useColorModeValue('gray.500', 'gray.300');
+  const headingColor = useColorModeValue('gray.800', 'white');
+  const authorIconColor = useColorModeValue('#718096', '#A0AEC0');
+  const noThumbnailBg = useColorModeValue('gray.100', 'gray.600');
+  const noThumbnailText = useColorModeValue('gray.500', 'gray.300');
 
   const authorsText = Array.isArray(authors) ? authors.join(', ') : authors;
 
   return (
     <Box
-      maxW="320px"
+      maxW={{ base: "100%", sm: "320px" }}
       w="100%"
       bg={bgColor}
       boxShadow={'md'}
       rounded={'lg'}
-      p={6}
+      p={{ base: 4, md: 6 }}
       overflow={'hidden'}
       borderWidth="1px"
       borderColor={borderColor}
       transition="all 0.3s"
       _hover={{
-        transform: 'translateY(-5px)',
-        boxShadow: 'lg',
+        transform: { base: 'none', md: 'translateY(-5px)' },
+        boxShadow: { base: 'md', md: 'lg' },
       }}
       mx="auto"
-      my={4}
+      my={{ base: 3, md: 4 }}
     >
       {thumbnailUrl ? (
         <Box
@@ -86,14 +91,14 @@ const ProjectCard = ({
       ) : (
         <Box
           h={'200px'}
-          bg={'gray.100'}
+          bg={noThumbnailBg}
           mt={-6}
           mx={-6}
           mb={6}
           display="flex"
           alignItems="center"
           justifyContent="center"
-          color="gray.500"
+          color={noThumbnailText}
         >
           No thumbnail available
         </Box>
@@ -104,17 +109,18 @@ const ProjectCard = ({
         fontWeight={500}
         fontFamily={'body'}
         noOfLines={1}
+        color={headingColor}
       >
         {title}
       </Heading>
 
-      <Text color={'gray.500'} fontSize={'sm'} mt={2}>
+      <Text color={textColor} fontSize={'sm'} mt={2}>
         {date}
       </Text>
 
       <HStack mt={2} spacing={1} alignItems="center">
-        <FaUser size="12px" color="#718096" />
-        <Text color={'gray.500'} fontSize={'sm'} noOfLines={1}>
+        <FaUser size="12px" color={authorIconColor} />
+        <Text color={textColor} fontSize={'sm'} noOfLines={1}>
           {authorsText}
         </Text>
       </HStack>
@@ -144,20 +150,20 @@ const ProjectCard = ({
             <Portal>
               <Dialog.Backdrop />
               <Dialog.Positioner>
-                <Dialog.Content>
+                <Dialog.Content bg={bgColor}>
                   <Dialog.Header>
-                    <Dialog.Title>{title}</Dialog.Title>
+                    <Dialog.Title color={headingColor}>{title}</Dialog.Title>
                     <Dialog.CloseTrigger asChild>
                       <CloseButton size="sm" />
                     </Dialog.CloseTrigger>
                   </Dialog.Header>
                   <Dialog.Body>
                     <Flex alignItems="center" mb={2}>
-                      <FaUser color="#718096" />
-                      <Text ml={2} fontWeight="bold">作成者: {authorsText}</Text>
+                      <FaUser color={authorIconColor} />
+                      <Text ml={2} fontWeight="bold" color={headingColor}>作成者: {authorsText}</Text>
                     </Flex>
 
-                    <Text fontSize="sm" color="gray.500" mb={4}>{date}</Text>
+                    <Text fontSize="sm" color={textColor} mb={4}>{date}</Text>
 
                     <Stack direction={'row'} mb={4} flexWrap="wrap" gap={1}>
                       {technologies.map((tech, index) => (
@@ -166,7 +172,7 @@ const ProjectCard = ({
                         </Badge>
                       ))}
                     </Stack>
-                    <Text mb={4}>{description}</Text>
+                    <Text mb={4} color={headingColor}>{description}</Text>
                     {thumbnailUrl && (
                       <Box maxW="100%" mb={4}>
                         <Image

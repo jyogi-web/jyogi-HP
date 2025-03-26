@@ -1,11 +1,20 @@
 import React, { useState, useEffect } from 'react'
 import { Container, Box, Text, Timeline } from "@chakra-ui/react"
+import { useColorModeValue } from "@/components/ui/color-mode";
 import SectionHeader from "./SectionHeader"
 
 const Achievement = () => {
   const [achievements, setAchievements] = useState([])
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState(null)
+
+  // ダークモード対応の色設定
+  const dateColor = useColorModeValue("gray.600", "gray.400")
+  const titleColor = useColorModeValue("black", "white")
+  const summaryColor = useColorModeValue("gray.700", "gray.300")
+  const errorColor = useColorModeValue("red.500", "red.300")
+  const loadingColor = useColorModeValue("gray.600", "gray.400")
+  const emptyDataColor = useColorModeValue("gray.600", "gray.400")
 
   useEffect(() => {
     const fetchAchievements = async () => {
@@ -45,7 +54,7 @@ const Achievement = () => {
         }))
 
         console.log('取得したデータ:', fetchedAchievements);
-        setAchievements(fetchedAchievements)
+        setAchievements(fetchedAchievements.reverse().slice(0, 5));
         setIsLoading(false)
       } catch (err) {
         console.error('エラーが発生しました:', err);
@@ -63,7 +72,7 @@ const Achievement = () => {
       <Container maxW="75%" py={12} mx="auto">
         <SectionHeader size="3xl">活動実績</SectionHeader>
         <Box my={10} textAlign="center">
-          <Text>データを読み込み中...</Text>
+          <Text color={loadingColor}>データを読み込み中...</Text>
         </Box>
       </Container>
     )
@@ -75,7 +84,7 @@ const Achievement = () => {
       <Container maxW="75%" py={12} mx="auto">
         <SectionHeader size="3xl">活動実績</SectionHeader>
         <Box my={10} textAlign="center">
-          <Text color="red.500">エラーが発生しました: {error}</Text>
+          <Text color={errorColor}>エラーが発生しました: {error}</Text>
         </Box>
       </Container>
     )
@@ -93,46 +102,74 @@ const Achievement = () => {
 
       <Box my={10}>
         {achievements.length === 0 ? (
-          <Text textAlign="center">表示するデータがありません</Text>
+          <Text textAlign="center" color={emptyDataColor}>表示するデータがありません</Text>
         ) : (
-          <Timeline.Root
-            size='md'
-            variant="subtle"
-            colorScheme="blue"
-          >
-            {achievements.map((achievement, index) => (
-              <Timeline.Item key={index} mb={10}>
-                <Timeline.Content flex="1" width="20%" textAlign="right" pr={4}>
-                  <Text
-                    fontSize="sm"
-                    color="gray.600"
-                    fontWeight="medium"
+          <>
+            <Timeline.Root
+              size='md'
+              variant="subtle"
+              colorScheme="blue"
+            >
+              {achievements.map((achievement, index) => (
+                <Timeline.Item key={index} mb={10}>
+                  <Timeline.Content
+                    flex="1"
+                    width={{ base: "30%", md: "20%" }}
+                    textAlign={{ base: "left", md: "right" }}
+                    pr={{ base: 2, md: 4 }}
                   >
-                    {achievement.date}
-                  </Text>
-                </Timeline.Content>
-                <Timeline.Connector>
-                  <Timeline.Separator />
-                  <Timeline.Indicator
-                    boxSize={5}
-                    bg="blue.500"
-                  />
-                </Timeline.Connector>
-                <Timeline.Content flex="4" pl={6}>
-                  <Timeline.Title
-                    fontWeight="bold"
-                    fontSize="xl"
-                    mb={2}
+                    <Text
+                      fontSize={{ base: "xs", md: "sm" }}
+                      color={dateColor}
+                      fontWeight="medium"
+                    >
+                      {achievement.date}
+                    </Text>
+                  </Timeline.Content>
+                  <Timeline.Connector>
+                    <Timeline.Separator />
+                    <Timeline.Indicator
+                      boxSize={{ base: 4, md: 5 }}
+                      bg="blue.500"
+                    />
+                  </Timeline.Connector>
+                  <Timeline.Content
+                    flex="4"
+                    pl={{ base: 4, md: 6 }}
                   >
-                    {achievement.title}
-                  </Timeline.Title>
-                  <Text color="gray.700">
-                    {achievement.summary}
-                  </Text>
-                </Timeline.Content>
-              </Timeline.Item>
-            ))}
-          </Timeline.Root>
+                    <Timeline.Title
+                      fontWeight="bold"
+                      fontSize={{ base: "lg", md: "xl" }}
+                      mb={2}
+                      color={titleColor}
+                    >
+                      {achievement.title}
+                    </Timeline.Title>
+                    <Text
+                      color={summaryColor}
+                      fontSize={{ base: "sm", md: "md" }}
+                    >
+                      {achievement.summary}
+                    </Text>
+                  </Timeline.Content>
+                </Timeline.Item>
+              ))}
+            </Timeline.Root>
+            <Box textAlign="center" mt={4} color="gray.500">
+              <Text fontSize="sm" fontStyle="italic" color={summaryColor}>
+                ・
+              </Text>
+              <Text fontSize="sm" fontStyle="italic" color={summaryColor}>
+                ・
+              </Text>
+              <Text fontSize="sm" fontStyle="italic" color={summaryColor}>
+                ・
+              </Text>
+              <Text fontSize="sm" marginTop={8} color={summaryColor}>
+                and more
+              </Text>
+            </Box>
+          </>
         )}
       </Box>
     </Container>

@@ -6,15 +6,29 @@ import {
   Heading,
   Text,
   VStack,
-  HStack,
   Badge,
 } from "@chakra-ui/react";
+import { useColorModeValue } from "@/components/ui/color-mode";
 
 const About = () => {
+  const headingColor = useColorModeValue("gray.800", "white");
+  const textColor = useColorModeValue("gray.700", "gray.300");
+  const imageShadow = useColorModeValue("md", "dark-lg");
+  const boxBg = useColorModeValue("white", "gray.800");
+  const boxShadow = useColorModeValue("sm", "md");
+
   return (
-    <Container maxW="75%" py={8} mx={"auto"}>
-      <Flex direction={{ base: "column", md: "row" }} gap={8} align="center">
-        <Box flex="1" maxW={{ base: "100%", md: "50%" }}>
+    <Container maxW="75%" py={{ base: 6, md: 8 }} mx={"auto"}>
+      <Flex
+        direction={{ base: "column", md: "row" }}
+        gap={{ base: 6, md: 8 }}
+        align="center"
+      >
+        <Box
+          flex="1"
+          maxW={{ base: "100%", md: "50%" }}
+          mb={{ base: 4, md: 0 }}
+        >
           <Image
             src="imgs/free-shuugou.jpeg"
             alt="jyogi集合写真"
@@ -22,17 +36,29 @@ const About = () => {
             h="auto"
             objectFit="cover"
             rounded="md"
-            shadow="md"
+            shadow={imageShadow}
           />
         </Box>
 
-        <Box flex="1" maxW={{ base: "100%", md: "50%" }} p={4}>
-          <VStack align="center" spacing={6} width="100%">
-            <Heading size="3xl" mb={4}>
+        <Box
+          flex="1"
+          maxW={{ base: "100%", md: "50%" }}
+          p={{ base: 3, md: 4 }}
+          bg={boxBg}
+          borderRadius="md"
+          shadow={boxShadow}
+        >
+          <VStack align="center" spacing={{ base: 4, md: 6 }} width="100%">
+            <Heading
+              size={{ base: "2xl", md: "3xl" }}
+              mb={{ base: 2, md: 4 }}
+              color={headingColor}
+              textAlign="center"
+            >
               じょぎ(情報技術研究部)
             </Heading>
             <Box textAlign="center" width="100%">
-              <Text fontWeight="bold" fontSize="2xl" mb={3}>
+              <Text fontWeight="bold" fontSize="2xl" mb={3} color={headingColor}>
                 部員数
               </Text>
               <Badge
@@ -47,35 +73,35 @@ const About = () => {
             </Box>
 
             <Box textAlign="center" width="100%">
-              <Text fontWeight="bold" fontSize="2xl" mb={3}>
+              <Text fontWeight="bold" fontSize="2xl" mb={3} color={headingColor}>
                 活動内容
               </Text>
               <Flex width="100%" justify='center' flexWrap="wrap" gap={4}>
                 <VStack align="start" spacing={2} minW="120px">
-                  <Text fontSize="md">・週1回の部会への参加</Text>
-                  <Text fontSize="md">・部室での開発（自由）</Text>
-                  <Text fontSize="md">・ゲーム開発</Text>
-                  <Text fontSize="md">・Web開発</Text>
+                  <Text fontSize="md" color={textColor}>・週1回の部会への参加</Text>
+                  <Text fontSize="md" color={textColor}>・部室での開発（自由）</Text>
+                  <Text fontSize="md" color={textColor}>・ゲーム開発</Text>
+                  <Text fontSize="md" color={textColor}>・Web開発</Text>
                 </VStack>
                 <VStack align="start" spacing={2} minW="120px">
-                  <Text fontSize="md">・イベントへの参加</Text>
-                  <Text fontSize="md">・部内ゲームイベント</Text>
-                  <Text fontSize="md">・部員旅行</Text>
+                  <Text fontSize="md" color={textColor}>・イベントへの参加</Text>
+                  <Text fontSize="md" color={textColor}>・部内ゲームイベント</Text>
+                  <Text fontSize="md" color={textColor}>・部員旅行</Text>
                 </VStack>
               </Flex>
             </Box>
 
             <Box textAlign="center" width="100%">
-              <Text fontWeight="bold" fontSize="2xl" mb={3}>
+              <Text fontWeight="bold" fontSize="2xl" mb={3} color={headingColor}>
                 年間予定
               </Text>
               <VStack align="center" spacing={2} width="100%">
-                <Text fontSize="md">・4月：新入部員歓迎会</Text>
-                <Text fontSize="md">・9月：部員旅行</Text>
-                <Text fontSize="md">・11月：立花祭展示</Text>
+                <Text fontSize="md" color={textColor}>・4月：新入部員歓迎会</Text>
+                <Text fontSize="md" color={textColor}>・9月：部員旅行</Text>
+                <Text fontSize="md" color={textColor}>・11月：立花祭展示</Text>
               </VStack>
             </Box>
-          </VStack>{" "}
+          </VStack>
         </Box>
       </Flex>
     </Container>

@@ -1,21 +1,28 @@
 import React from "react";
 import { Box, Text, Image } from "@chakra-ui/react";
+import { useColorModeValue } from "@/components/ui/color-mode";
 
 const NewsCard = ({ date, imagesrc, description }) => {
+  const bgColor = useColorModeValue("white", "gray.700");
+  const textColor = useColorModeValue("gray.600", "gray.300");
+  const descriptionColor = useColorModeValue("black", "white");
+  const shadowColor = useColorModeValue("sm", "lg");
+
   return (
     <Box
       flex="1"
+      w={{ base: "100%", md: "auto" }}
       maxW={{ base: "100%", md: "45%" }}
-      mx={2}
+      mx={{ base: 0, md: 2 }}
       mb={4}
       p={3}
       borderRadius="md"
-      boxShadow="sm"
-      bg="white"
+      boxShadow={shadowColor}
+      bg={bgColor}
     >
       <Text
         fontSize="sm"
-        color="gray.600"
+        color={textColor}
         fontWeight="medium"
         mb={2}
       >
@@ -43,8 +50,10 @@ const NewsCard = ({ date, imagesrc, description }) => {
       <Text
         fontSize="md"
         lineHeight="1.5"
-        noOfLines={3} // 3行以上は省略する
+        // 3行以上は省略する
+        noOfLines={3}
         overflow="hidden"
+        color={descriptionColor}
       >
         {description}
       </Text>
