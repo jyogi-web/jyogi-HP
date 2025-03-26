@@ -1,3 +1,7 @@
+import React from 'react';
+import { Helmet } from 'react-helmet-async';
+import { useLocation } from 'react-router-dom';
+
 const Seo = ({
     title = "情報技術研究部 | じょぎ",
     description = "福岡工業大学情報技術研究部（じょぎ）の公式ウェブサイトです。Web開発やゲーム開発を行う学生サークルです。",
@@ -8,6 +12,7 @@ const Seo = ({
     const { pathname } = useLocation();
     const currentUrl = `${siteUrl}${pathname}`;
 
+    // 画像URLの正規化
     const imageUrl = image.startsWith('http') ? image : `${siteUrl}${image}`;
 
     return (
@@ -37,3 +42,5 @@ const Seo = ({
         </Helmet>
     );
 };
+
+export default Seo;
