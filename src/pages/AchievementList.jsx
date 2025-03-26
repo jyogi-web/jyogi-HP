@@ -2,12 +2,10 @@ import React, { useState, useEffect } from 'react'
 import { Container, Box, Text, Timeline } from "@chakra-ui/react"
 import { useColorModeValue } from "@/components/ui/color-mode";
 import SectionHeader from "@/components/SectionHeader"
+import useAchievement from '@/hooks/useAchievement';
 
 const AchievementList = () => {
-  const [achievements, setAchievements] = useState([])
-  const [isLoading, setIsLoading] = useState(true)
-  const [error, setError] = useState(null)
-
+  const { achievements, isLoading, error } = useAchievement()
   // ダークモード対応の色設定
   const dateColor = useColorModeValue("gray.600", "gray.400")
   const titleColor = useColorModeValue("black", "white")
