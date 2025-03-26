@@ -36,7 +36,14 @@ const SectionHeader = ({ children, buttontext, buttonhref, size = "2xl" }) => {
 
         {buttontext && buttonhref && (
           <Box mr={{ base: 0, sm: 6 }} order={{ base: 3, sm: 2 }}>
-            <Link to={buttonhref}>
+            <Link
+              to={buttonhref}
+              onClick={() => {
+                setTimeout(() => {
+                  window.scrollTo(0, 0);
+                }, 100);
+              }}
+            >
               <Button
                 colorScheme="blue"
                 size="md"
