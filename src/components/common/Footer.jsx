@@ -133,10 +133,10 @@ const Footer = () => {
                                 <Button
                                     rightIcon={<FaExternalLinkAlt />}
                                     colorScheme="blue"
-                                    size="lg"
+                                    size={{ base: "md", md: "lg" }}
                                     w="100%"
-                                    height="60px"
-                                    fontSize="md"
+                                    height={{ base: "50px", md: "60px" }}
+                                    fontSize={{ base: "sm", md: "md" }}
                                     fontWeight="bold"
                                     shadow="md"
                                     _hover={{

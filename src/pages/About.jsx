@@ -18,9 +18,17 @@ const About = () => {
   const boxShadow = useColorModeValue("sm", "md");
 
   return (
-    <Container maxW="75%" py={8} mx={"auto"}>
-      <Flex direction={{ base: "column", md: "row" }} gap={8} align="center">
-        <Box flex="1" maxW={{ base: "100%", md: "50%" }}>
+    <Container maxW="75%" py={{ base: 6, md: 8 }} mx={"auto"}>
+      <Flex
+        direction={{ base: "column", md: "row" }}
+        gap={{ base: 6, md: 8 }}
+        align="center"
+      >
+        <Box
+          flex="1"
+          maxW={{ base: "100%", md: "50%" }}
+          mb={{ base: 4, md: 0 }}
+        >
           <Image
             src="imgs/free-shuugou.jpeg"
             alt="jyogi集合写真"
@@ -32,9 +40,21 @@ const About = () => {
           />
         </Box>
 
-        <Box flex="1" maxW={{ base: "100%", md: "50%" }} p={4} bg={boxBg} borderRadius="md" shadow={boxShadow}>
-          <VStack align="center" spacing={6} width="100%">
-            <Heading size="3xl" mb={4} color={headingColor}>
+        <Box
+          flex="1"
+          maxW={{ base: "100%", md: "50%" }}
+          p={{ base: 3, md: 4 }}
+          bg={boxBg}
+          borderRadius="md"
+          shadow={boxShadow}
+        >
+          <VStack align="center" spacing={{ base: 4, md: 6 }} width="100%">
+            <Heading
+              size={{ base: "2xl", md: "3xl" }}
+              mb={{ base: 2, md: 4 }}
+              color={headingColor}
+              textAlign="center"
+            >
               じょぎ(情報技術研究部)
             </Heading>
             <Box textAlign="center" width="100%">
