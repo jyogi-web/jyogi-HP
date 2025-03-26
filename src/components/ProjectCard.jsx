@@ -49,8 +49,8 @@ const ProjectCard = ({
 
   return (
     <Box
-      maxW={'350px'}
-      w={'full'}
+      maxW="320px"
+      w="100%"
       bg={bgColor}
       boxShadow={'md'}
       rounded={'lg'}
@@ -63,6 +63,8 @@ const ProjectCard = ({
         transform: 'translateY(-5px)',
         boxShadow: 'lg',
       }}
+      mx="auto"
+      my={4}
     >
       {thumbnailUrl ? (
         <Box
@@ -175,7 +177,7 @@ const ProjectCard = ({
                         />
                       </Box>
                     )}
-                    <Stack direction="row" spacing={4} mt={2}>
+                    <Stack direction={{ base: 'column', md: 'row' }} spacing={4} mt={2}>
                       {youtubeUrl && (
                         <Button
                           as={Link}
@@ -186,6 +188,7 @@ const ProjectCard = ({
                           _hover={{
                             textDecoration: 'none'
                           }}
+                          w={{ base: 'full', md: 'auto' }}
                         >
                           YouTube
                         </Button>
@@ -200,6 +203,7 @@ const ProjectCard = ({
                           _hover={{
                             textDecoration: 'none'
                           }}
+                          w={{ base: 'full', md: 'auto' }}
                         >
                           作品のリンク
                         </Button>

@@ -1,6 +1,6 @@
 "use client"
 
-import { Box, SimpleGrid, Container, Heading, Text, Spinner, Alert } from "@chakra-ui/react";
+import { Box, SimpleGrid, Container, Heading, Text, Spinner, Alert, AlertIcon, AlertTitle, AlertDescription } from "@chakra-ui/react";
 import ProjectCard from "../components/ProjectCard";
 import { useProjects } from "../hooks/useProjects";
 
@@ -63,8 +63,9 @@ const MemberProject = () => {
       </Heading>
       <SimpleGrid
         columns={{ base: 1, sm: 2, lg: 3 }}
-        spacing={10}
+        spacing={{ base: 24, md: 16 }}
         justifyItems="center"
+        px={{ base: 4, md: 8 }}
       >
         {projects.map((project, index) => (
           <ProjectCard
