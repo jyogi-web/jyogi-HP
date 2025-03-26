@@ -1,10 +1,9 @@
-// src/components/Seo.jsx
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useLocation } from 'react-router-dom';
 
 const Seo = ({
-    title = "情報技術研究部 | JYOGI",
+    title = "情報技術研究部 | じょぎ",
     description = "福岡工業大学情報技術研究部（じょぎ）の公式ウェブサイトです。Web開発やゲーム開発を行う学生サークルです。",
     image = "/imgs/jyogi.png",
     twitterCard = "summary_large_image",
@@ -25,7 +24,7 @@ const Seo = ({
             <meta property="og:description" content={description} />
             <meta property="og:image" content={`${siteUrl}${image}`} />
             <meta property="og:type" content="website" />
-            <meta property="og:site_name" content="情報技術研究部 | JYOGI" />
+            <meta property="og:site_name" content="情報技術研究部 | じょぎ" />
             <meta property="og:locale" content="ja_JP" />
 
             {/* Twitter Card */}

@@ -9,13 +9,13 @@ const Home = () => {
   return (
     <>
       <Seo
-        title="情報技術研究部 | JYOGI - 福岡工業大学"
+        title="情報技術研究部 | じょぎ"
         description="福岡工業大学情報技術研究部（じょぎ）の公式ウェブサイトです。Web開発やゲーム開発を行う学生サークルです。"
         image="/imgs/jyogi.png"
       />
       <VStack grap="18">
         <Image
-          src="imgs/header-back-logo.png"
+          src="imgs/jyogi.png"
           width="100vw"
           maxWidth="100%"
           height="auto"
