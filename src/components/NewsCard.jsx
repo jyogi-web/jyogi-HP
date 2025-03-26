@@ -1,30 +1,30 @@
 import React from "react";
 import { Box, Text, Image } from "@chakra-ui/react";
 
-const NewsCard = ({date, imagesrc, description}) => {
+const NewsCard = ({ date, imagesrc, description }) => {
   return (
-    <Box 
-      flex="1" 
+    <Box
+      flex="1"
       maxW={{ base: "100%", md: "45%" }}
       mx={2}
       mb={4}
-      p={3} 
+      p={3}
       borderRadius="md"
       boxShadow="sm"
       bg="white"
     >
-      <Text 
-        fontSize="sm" 
-        color="gray.600" 
+      <Text
+        fontSize="sm"
+        color="gray.600"
         fontWeight="medium"
         mb={2}
       >
         {date}
       </Text>
-      
-      <Box 
+
+      <Box
         height="200px"
-        width="100%" 
+        width="100%"
         overflow="hidden"
         borderRadius="md"
         mb={3}
@@ -39,9 +39,9 @@ const NewsCard = ({date, imagesrc, description}) => {
           shadow="md"
         />
       </Box>
-      
-      <Text 
-        fontSize="md" 
+
+      <Text
+        fontSize="md"
         lineHeight="1.5"
         noOfLines={3} // 3行以上は省略する
         overflow="hidden"
