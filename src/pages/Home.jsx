@@ -1,9 +1,11 @@
-import { Avatar, For, VStack, Text, Center, Image } from "@chakra-ui/react";
+import { VStack, Image } from "@chakra-ui/react";
 import About from "@/pages/About";
 import News from "@/components/News";
 import Achievement from "@/components/Achievement";
+import ProjectsSection from "@/components/ProjectsSection";
 
 const Home = () => {
+
   return (
     <VStack grap="18">
       <Image
@@ -18,6 +20,8 @@ const Home = () => {
       <About />
       <News />
       <Achievement />
+      {/* 部員作品紹介 */}
+      <ProjectsSection />
     </VStack>
   );
 };
