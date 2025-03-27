@@ -1,33 +1,33 @@
-import {useEffect,useState} from 'react'
+import { useEffect, useState } from 'react';
 
-const useAchievement = () => {
-      const [achievements, setAchievements] = useState([])
-      const [isLoading, setIsLoading] = useState(true)
-      const [error, setError] = useState(null)
+export const useAchievement = (limit = null) => {
+  const [achievements, setAchievements] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
+
   useEffect(() => {
     const fetchAchievements = async () => {
       try {
-        const SPREADSHEET_ID = import.meta.env.VITE_SPREADSHEET_ID
-        const API_KEY = import.meta.env.VITE_GOOGLE_SHEETS_API_KEY
+        const SPREADSHEET_ID = import.meta.env.VITE_SPREADSHEET_ID;
+        const API_KEY = import.meta.env.VITE_GOOGLE_SHEETS_API_KEY;
 
-        console.log("SPREADSHEET_ID:", SPREADSHEET_ID)
-        console.log("API_KEY:", API_KEY)
+        console.log("SPREADSHEET_ID:", SPREADSHEET_ID);
+        console.log("API_KEY:", API_KEY);
 
         if (!SPREADSHEET_ID || !API_KEY) {
           throw new Error('環境変数が設定されていません');
         }
 
         const response = await fetch(
-          `https://sheets.googleapis.com/v4/spreadsheets/${SPREADSHEET_ID}/values/Achievements!A2:C?key=${API_KEY}`
-        )
+          `https://sheets.googleapis.com/v4/spreadsheets/${SPREADSHEET_ID}/values/Achievements!A2:D?key=${API_KEY}`
+        );
 
         if (!response.ok) {
-          throw new Error('データの取得に失敗しました: ' + response.status)
+          throw new Error('データの取得に失敗しました: ' + response.status);
         }
 
-        const data = await response.json()
+        const data = await response.json();
 
-        // データが存在するか確認
         if (!data.values || !data.values.length) {
           console.log('データが空です');
           setAchievements([]);
@@ -35,26 +35,40 @@ const useAchievement = () => {
           return;
         }
 
-        const fetchedAchievements = data.values.map(([date, title, summary]) => ({
+        const fetchedAchievements = data.values.map(([date, title, summary, hasAward]) => ({
           date,
           title,
-          summary
-        }))
+          summary,
+          hasAward: hasAward === "有"
+        }));
 
-        console.log('取得したデータ:', fetchedAchievements);
-        setAchievements(fetchedAchievements.reverse());
-        setIsLoading(false)
+        // 日付の新しい順に並べ替え
+        const sortedAchievements = fetchedAchievements.sort((a, b) => {
+          if (!a.date) return 1;
+          if (!b.date) return -1;
+
+          const dateA = new Date(a.date.replace(/(\d+)\/(\d+)\/(\d+)/, '$1-$2-$3'));
+          const dateB = new Date(b.date.replace(/(\d+)\/(\d+)\/(\d+)/, '$1-$2-$3'));
+
+          return dateB - dateA;
+        });
+
+        console.log('取得したデータ:', sortedAchievements);
+
+        // limitが指定されている場合は上位n件のみを返す
+        const limitedAchievements = limit ? sortedAchievements.slice(0, limit) : sortedAchievements;
+
+        setAchievements(limitedAchievements);
+        setIsLoading(false);
       } catch (err) {
         console.error('エラーが発生しました:', err);
-        setError(err.message)
-        setIsLoading(false)
+        setError(err.message);
+        setIsLoading(false);
       }
-    }
+    };
 
-    fetchAchievements()
-  }, [])
+    fetchAchievements();
+  }, [limit]);
 
   return { achievements, isLoading, error };
-}
-
-export default useAchievement
+};
