@@ -4,7 +4,7 @@ import { Box, SimpleGrid, Container, Heading, Text, Spinner, Alert } from "@chak
 import { useColorModeValue } from "@/components/ui/color-mode";
 import ProjectCard from "../components/ProjectCard";
 import { useProjects } from "../hooks/useProjects";
-import Seo from "@/components/Seo";
+import Seo from "@/components/common/Seo";
 
 const MemberProject = () => {
   const { projects, isLoading, error } = useProjects();
