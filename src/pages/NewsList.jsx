@@ -24,6 +24,7 @@ const newsItems = [
 ];
 
 const NewsList = () => {
+    // Dark mode support
     const bgColor = useColorModeValue("gray.50", "gray.900");
     const textColor = useColorModeValue("gray.800", "gray.100");
 
@@ -44,10 +45,25 @@ const NewsList = () => {
                     <Flex
                         wrap="wrap"
                         gap={6}
-                        justify="space-between"
+                        justify="center"
                     >
                         {newsItems.map((news, index) => (
-                            <Box key={index} width={{ base: "100%", md: "calc(50% - 12px)", lg: "calc(33.333% - 16px)" }}>
+                            <Box
+                                key={index}
+                                width={{ base: "100%", md: "calc(50% - 32px)", lg: "calc(33.333% - 32px)" }}
+                                borderWidth="1px"
+                                borderRadius="lg"
+                                overflow="hidden"
+                                boxShadow="sm"
+                                bg={useColorModeValue("white", "gray.700")}
+                                transition="all 0.3s"
+                                _hover={{
+                                    transform: "translateY(-5px)",
+                                    boxShadow: "md",
+                                }}
+                                maxW="400px"
+                                mb={4}
+                            >
                                 <NewsCard
                                     date={news.date}
                                     imagesrc={news.imagesrc}
