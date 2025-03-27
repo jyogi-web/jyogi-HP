@@ -130,8 +130,11 @@ const About = () => {
               >
                 <VStack align="start" spacing={2}>
                   <Text fontSize="md" color={textColor}>・4月：新入部員歓迎会</Text>
+                  <Text fontSize="md" color={textColor}>・5月：部内ハッカソン</Text>
                   <Text fontSize="md" color={textColor}>・9月：部員旅行</Text>
                   <Text fontSize="md" color={textColor}>・11月：立花祭展示</Text>
+                  <Text fontSize="md" color={textColor}>・1月：部内ハッカソン</Text>
+                  <Text fontSize="md" color={textColor}>・通年：外部ハッカソン参加</Text>
                 </VStack>
               </Box>
 
@@ -144,8 +147,11 @@ const About = () => {
               >
                 <VStack align="start" spacing={2}>
                   <Text fontSize="md" color={textColor}>・4月：新入部員歓迎会</Text>
+                  <Text fontSize="md" color={textColor}>・5月：部内ハッカソン</Text>
                   <Text fontSize="md" color={textColor}>・9月：部員旅行</Text>
                   <Text fontSize="md" color={textColor}>・11月：立花祭展示</Text>
+                  <Text fontSize="md" color={textColor}>・1月：部内ハッカソン</Text>
+                  <Text fontSize="md" color={textColor}>・通年：外部ハッカソン参加</Text>
                 </VStack>
               </Box>
             </Box>
