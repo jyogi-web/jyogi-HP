@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { Container, Box, Text, Timeline } from "@chakra-ui/react"
 import { useColorModeValue } from "@/components/ui/color-mode";
 import SectionHeader from "./SectionHeader"
-import useAchievement from '@/hooks/useAchievement';
+import { useAchievement } from "@/hooks/useAchievement";
 
 const Achievement = () => {
-  const { achievements, isLoading, error } = useAchievement()
+  const { achievements, isLoading, error } = useAchievement(5);// 最新5件のみ表示
 
   // ダークモード対応の色設定
   const dateColor = useColorModeValue("gray.600", "gray.400")
@@ -15,6 +15,9 @@ const Achievement = () => {
   const loadingColor = useColorModeValue("gray.600", "gray.400")
   const emptyDataColor = useColorModeValue("gray.600", "gray.400")
 
+  // 受賞のインジケーター色
+  const awardColor = useColorModeValue("yellow.400", "yellow.300")
+  const defaultIndicatorColor = useColorModeValue("blue.500", "blue.400")
 
   // ローディング状態の表示
   if (isLoading) {
@@ -60,7 +63,7 @@ const Achievement = () => {
               variant="subtle"
               colorScheme="blue"
             >
-              {achievements.slice(0, 5).map((achievement, index) => (
+              {achievements.map((achievement, index) => (
                 <Timeline.Item key={index} mb={10}>
                   <Timeline.Content
                     flex="1"
@@ -80,7 +83,7 @@ const Achievement = () => {
                     <Timeline.Separator />
                     <Timeline.Indicator
                       boxSize={{ base: 4, md: 5 }}
-                      bg="blue.500"
+                      bg={achievement.hasAward ? awardColor : defaultIndicatorColor}
                     />
                   </Timeline.Connector>
                   <Timeline.Content
