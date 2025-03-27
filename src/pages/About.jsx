@@ -2,19 +2,18 @@ import {
   Container,
   Flex,
   Box,
-  Image,
   Heading,
   Text,
   VStack,
   Badge,
   SimpleGrid,
+  AspectRatio,
 } from "@chakra-ui/react";
 import { useColorModeValue } from "@/components/ui/color-mode";
 
 const About = () => {
   const headingColor = useColorModeValue("gray.800", "white");
   const textColor = useColorModeValue("gray.700", "gray.300");
-  const imageShadow = useColorModeValue("md", "dark-lg");
   const boxBg = useColorModeValue("white", "gray.800");
   const boxShadow = useColorModeValue("sm", "md");
 
@@ -29,16 +28,17 @@ const About = () => {
           flex="1"
           maxW={{ base: "100%", md: "50%" }}
           mb={{ base: 4, md: 0 }}
+          w="full"
+          display={{ base: "block", md: "block" }}
         >
-          <Image
-            src="imgs/free-shuugou.jpeg"
-            alt="jyogi集合写真"
-            w="full"
-            h="auto"
-            objectFit="cover"
-            rounded="md"
-            shadow={imageShadow}
-          />
+          <AspectRatio ratio={16 / 9} w="full">
+            <iframe
+              src="https://www.youtube.com/embed/zUeYh9JBuOg"
+              title="jyogi紹介動画"
+              allowFullScreen
+              borderRadius="md"
+            />
+          </AspectRatio>
         </Box>
 
         <Box
