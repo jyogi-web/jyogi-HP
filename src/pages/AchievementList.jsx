@@ -39,11 +39,7 @@ const AchievementList = () => {
 
   return (
     <Container maxW="75%" py={12} mx="auto">
-      <SectionHeader
-        size="3xl"
-        buttontext="他の活動を見る"
-        buttonhref="/activities"
-      >
+      <SectionHeader size="3xl">
         活動実績
       </SectionHeader>
 
@@ -91,7 +87,7 @@ const AchievementList = () => {
           </Timeline.Root>
         )}
       </Box>
-    </Container>
+    </Container >
   );
 };
 
