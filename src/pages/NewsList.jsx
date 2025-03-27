@@ -85,10 +85,10 @@ const NewsList = () => {
                 mb={4}
               >
                 <NewsCard
-                  date={news.published} // updated → published（または必要に応じて変更）
-                  imagesrc={news.thumbnail || "/imgs/news-placeholder.png"} // 画像がない場合のフォールバック
+                  date={news.published}
+                  imagesrc={news.thumbnail || "/imgs/news-placeholder.png"} 
                   description={news.title}
-                  link={news.link} // リンクも追加
+                  link={news.link}
                 />
               </Box>
             ))}

@@ -2,14 +2,30 @@ import React from "react";
 import { Box, Text, Image } from "@chakra-ui/react";
 import { useColorModeValue } from "@/components/ui/color-mode";
 
-const NewsCard = ({ date, imagesrc, description }) => {
+const NewsCard = ({ date, imagesrc, description, link=null }) => {
   const textColor = useColorModeValue("gray.600", "gray.300");
   const descriptionColor = useColorModeValue("black", "white");
+  const bgHoverColor = useColorModeValue("gray.50", "gray.700");
+  
+  const handleClick = () => {
+    if (link) {
+      // 新しいタブでリンクを開く
+      window.open(link, "_blank", "noopener,noreferrer");
+    }
+  };
 
   return (
     <Box
       w="100%"
       p={0}
+      cursor={link ? "pointer" : "default"}
+      onClick={handleClick}
+      transition="all 0.2s"
+      _hover={{
+        bg: link ? bgHoverColor : "initial",
+        transform: link ? "translateY(-2px)" : "none",
+      }}
+      position="relative"
     >
       <Text
         fontSize="sm"
@@ -18,7 +34,9 @@ const NewsCard = ({ date, imagesrc, description }) => {
         p={4}
         pb={2}
       >
-        {date}
+        {typeof date === 'object' && date instanceof Date 
+          ? date.toLocaleDateString('ja-JP')
+          : date}
       </Text>
 
       <Box
@@ -32,6 +50,8 @@ const NewsCard = ({ date, imagesrc, description }) => {
           w="100%"
           h="100%"
           objectFit="cover"
+          transition="transform 0.3s"
+          _groupHover={{ transform: "scale(1.05)" }}
         />
       </Box>
 
