@@ -1,9 +1,9 @@
 import { VStack, Image } from "@chakra-ui/react";
-import About from "@/pages/About";
+import About from "@/components/About";
 import News from "@/components/News";
 import Achievement from "@/components/Achievement";
 import ProjectsSection from "@/components/ProjectsSection";
-import Seo from "@/components/Seo";
+import Seo from "@/components/common/Seo";
 
 const Home = () => {
   return (

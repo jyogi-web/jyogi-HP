@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Box, Text, Image, Flex } from "@chakra-ui/react";
-import SectionHeader from "./SectionHeader";
+import SectionHeader from "./common/SectionHeader";
 import NewsCard from "./NewsCard";
 
 const News = () => {
