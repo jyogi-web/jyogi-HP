@@ -1,7 +1,7 @@
 import React from 'react'
 import { Container, Box, Text, Timeline } from "@chakra-ui/react"
 import { useColorModeValue } from "@/components/ui/color-mode";
-import SectionHeader from "@/components/SectionHeader"
+import SectionHeader from "@/components/common/SectionHeader"
 import { useAchievement } from "@/hooks/useAchievement";
 
 const AchievementList = () => {

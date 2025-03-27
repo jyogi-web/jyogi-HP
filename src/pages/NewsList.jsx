@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Flex, Box, Text, Image } from "@chakra-ui/react";
 import { useColorModeValue } from "@/components/ui/color-mode";
-import SectionHeader from "@/components/SectionHeader";
+import SectionHeader from "@/components/common/SectionHeader";
 import NewsCard from "@/components/NewsCard";
 import Seo from "@/components/Seo";
 
