@@ -1,6 +1,6 @@
 import { Container, Box, SimpleGrid, Spinner, Text } from "@chakra-ui/react";
 import { useColorModeValue } from "@/components/ui/color-mode";
-import SectionHeader from "@/components/SectionHeader";
+import SectionHeader from "./common/SectionHeader";
 import ProjectCard from "@/components/ProjectCard";
 import { useProjects } from "@/hooks/useProjects";
 

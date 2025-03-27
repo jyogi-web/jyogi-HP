@@ -1,12 +1,18 @@
 import React from "react";
-import { Container, For, Box, Text, Image, Flex } from "@chakra-ui/react";
-import SectionHeader from "./SectionHeader";
+import { Container, Box, Text, Image, Flex } from "@chakra-ui/react";
+import SectionHeader from "./common/SectionHeader";
 import NewsCard from "./NewsCard";
 
 const News = () => {
   return (
     <Container maxW="75%" py={8} mx={"auto"}>
-      <SectionHeader size="4xl">最近のニュース</SectionHeader>
+      <SectionHeader
+        size="4xl"
+        buttontext="ニュース一覧を見る"
+        buttonhref="/news"
+      >
+        最近のニュース
+      </SectionHeader>
       <Flex
         direction={{ base: "column", md: "row" }}
         gap={{ base: 4, md: 2 }}

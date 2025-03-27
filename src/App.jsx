@@ -1,12 +1,13 @@
 import { Route, Routes } from "react-router-dom";
+import { Stack, Box } from "@chakra-ui/react";
+import { useColorModeValue } from "@/components/ui/color-mode";
 import Home from "@/pages/Home";
 import Header from "@/components/common/Header";
 import Footer from "@/components/common/Footer";
 import MemberProject from "@/pages/MemberProject";
 import AchievementList from "@/pages/AchievementList";
+import NewsList from "@/pages/NewsList";
 import "@/styles/index.css";
-import { Stack, Box } from "@chakra-ui/react";
-import { useColorModeValue } from "@/components/ui/color-mode";
 
 function App() {
   const bgColor = useColorModeValue("white", "gray.900");
@@ -31,7 +32,8 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/projects" element={<MemberProject />} />
-            <Route path="/activities" element={<AchievementList/>}/>
+            <Route path="/activities" element={<AchievementList />} />
+            <Route path="/news" element={<NewsList />} />
           </Routes>
         </Box>
         <Footer />
