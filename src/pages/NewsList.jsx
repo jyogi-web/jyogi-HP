@@ -1,5 +1,5 @@
 import React from "react";
-import {Container, Flex, Box, Text, Spinner, Center, Alert } from "@chakra-ui/react";
+import { Container, Grid, Box, Text, Spinner, Center, Alert } from "@chakra-ui/react";
 import { useColorModeValue } from "@/components/ui/color-mode";
 import SectionHeader from "@/components/common/SectionHeader";
 import NewsCard from "@/components/NewsCard";
@@ -62,15 +62,20 @@ const NewsList = () => {
             </Alert>
           </Container>
         ) : newsList && newsList.length > 0 ? (
-          <Flex wrap="wrap" gap={6} justify="center">
+          <Grid
+            templateColumns={{
+              base: "1fr",
+              md: "repeat(2, 1fr)",
+              lg: "repeat(3, 1fr)"
+            }}
+            gap={6}
+            justifyItems="center"
+          >
             {newsList.map((news, index) => (
               <Box
                 key={index}
-                width={{
-                  base: "100%",
-                  md: "calc(50% - 32px)",
-                  lg: "calc(33.333% - 32px)",
-                }}
+                width="100%"
+                maxW="400px"
                 borderWidth="1px"
                 borderRadius="lg"
                 overflow="hidden"
@@ -81,18 +86,17 @@ const NewsList = () => {
                   transform: "translateY(-5px)",
                   boxShadow: "md",
                 }}
-                maxW="400px"
                 mb={4}
               >
                 <NewsCard
                   date={news.published}
-                  imagesrc={news.thumbnail || "/imgs/news-placeholder.png"} 
+                  imagesrc={news.thumbnail || "/imgs/news-placeholder.png"}
                   description={news.title}
                   link={news.link}
                 />
               </Box>
             ))}
-          </Flex>
+          </Grid>
         ) : (
           <Center py={10} bg={cardBgColor} borderRadius="md" shadow="sm">
             <Text fontSize="lg" color={textColor}>
