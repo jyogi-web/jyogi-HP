@@ -1,4 +1,3 @@
-import React from "react";
 import { Container, Grid, Box, Text, Spinner, Center, Alert } from "@chakra-ui/react";
 import { useColorModeValue } from "@/components/ui/color-mode";
 import SectionHeader from "@/components/common/SectionHeader";
