@@ -1,23 +1,11 @@
-"use client"
-
 import PropTypes from 'prop-types';
 import {
-  Box,
-  Image,
-  Heading,
-  Text,
-  Stack,
-  Badge,
-  Link,
-  Button,
-  CloseButton,
-  Dialog,
-  Portal,
-  HStack,
-  Flex,
+  Box, Image, Heading, Text, Stack, Badge, Link, Button, CloseButton, Dialog, Portal, HStack, Flex,
 } from '@chakra-ui/react';
 import { FaGithub, FaYoutube, FaExternalLinkAlt, FaNewspaper, FaInfoCircle, FaUser } from 'react-icons/fa';
 import { useColorModeValue } from "@/components/ui/color-mode";
+import { useState, useEffect } from 'react';
+
 const ProjectCard = ({
   title,
   authors,
@@ -29,19 +17,20 @@ const ProjectCard = ({
   githubLink,
   articleLink
 }) => {
+  const [imageSrc, setImageSrc] = useState(null);
+  const [imageError, setImageError] = useState(false);
+
   const getYoutubeThumbnail = (url) => {
     if (!url) return null;
 
     const videoId = url.match(/(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/);
-
     if (videoId && videoId[1]) {
-      return `https://img.youtube.com/vi/${videoId[1]}/maxresdefault.jpg`;
+      return `https://img.youtube.com/vi/${videoId[1]}/hqdefault.jpg`;
     }
 
     return null;
   };
 
-  const thumbnailUrl = getYoutubeThumbnail(youtubeUrl);
   const bgColor = useColorModeValue('white', 'gray.700');
   const borderColor = useColorModeValue('gray.200', 'gray.600');
   const textColor = useColorModeValue('gray.500', 'gray.300');
@@ -52,6 +41,26 @@ const ProjectCard = ({
 
   const authorsText = Array.isArray(authors) ? authors.join(', ') : authors;
 
+  const handleImageError = () => {
+    console.log('Image failed to load, switching to jyogi.png');
+    setImageError(true);
+    setImageSrc('../../imgs/jyogi.png');
+  };
+  useEffect(() => {
+    if (youtubeUrl) {
+      const thumbnailUrl = getYoutubeThumbnail(youtubeUrl);
+      if (thumbnailUrl) {
+        setImageSrc(thumbnailUrl);
+        setImageError(false);
+      } else {
+        setImageSrc('../../imgs/jyogi.png');
+        setImageError(true);
+      }
+    } else {
+      setImageSrc('../../imgs/jyogi.png');
+      setImageError(true);
+    }
+  }, [youtubeUrl]);
   return (
     <Box
       maxW={{ base: "100%", sm: "320px" }}
@@ -71,7 +80,7 @@ const ProjectCard = ({
       mx="auto"
       my={{ base: 3, md: 4 }}
     >
-      {thumbnailUrl ? (
+      {imageSrc ? (
         <Box
           h={'200px'}
           bg={'gray.100'}
@@ -81,11 +90,12 @@ const ProjectCard = ({
           pos={'relative'}
         >
           <Image
-            src={thumbnailUrl}
+            src={imageSrc}
             alt={`${title} thumbnail`}
-            fit="cover"
+            fit={imageError ? "contain" : "cover"}
             w="full"
             h="full"
+            onError={handleImageError}
           />
         </Box>
       ) : (
@@ -100,10 +110,17 @@ const ProjectCard = ({
           justifyContent="center"
           color={noThumbnailText}
         >
-          No thumbnail available
+          <Image
+            src="../../imgs/jyogi.png"
+            alt="No thumbnail available"
+            fit="contain"
+            maxH="100%"
+            maxW="100%"
+            borderRadius="md"
+            onError={() => console.error('Fallback image failed to load')}
+          />
         </Box>
       )}
-
       <Heading
         fontSize={'xl'}
         fontWeight={500}
@@ -173,13 +190,15 @@ const ProjectCard = ({
                       ))}
                     </Stack>
                     <Text mb={4} color={headingColor}>{description}</Text>
-                    {thumbnailUrl && (
+                    {imageSrc && (
                       <Box maxW="100%" mb={4}>
                         <Image
-                          src={thumbnailUrl}
+                          src={imageSrc}
                           alt={`${title} thumbnail`}
                           borderRadius="md"
                           w="full"
+                          fit={imageError ? "contain" : "cover"}
+                          onError={handleImageError}
                         />
                       </Box>
                     )}
