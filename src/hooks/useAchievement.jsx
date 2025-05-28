@@ -32,25 +32,30 @@ export const useAchievement = (limit = null) => {
           return;
         }
 
-        const fetchedAchievements = data.values.map(([date, title, summary, hasAward]) => ({
-          date,
-          title,
-          summary,
-          hasAward: hasAward === "有"
-        }));
+        const fetchedAchievements = data.values
+          .map(([date, title, summary, hasAward]) => ({
+            date,
+            title,
+            summary,
+            hasAward: hasAward === "有"
+          }))
+          .filter(achievement =>
+            achievement.date &&
+            achievement.date.trim() !== '' &&
+            achievement.title &&
+            achievement.title.trim() !== '' &&
+            achievement.summary &&
+            achievement.summary.trim() !== ''
+          );
 
-        // 日付の新しい順に並べ替え
         const sortedAchievements = fetchedAchievements.sort((a, b) => {
-          if (!a.date) return 1;
-          if (!b.date) return -1;
-
           const dateA = new Date(a.date.replace(/(\d+)\/(\d+)\/(\d+)/, '$1-$2-$3'));
           const dateB = new Date(b.date.replace(/(\d+)\/(\d+)\/(\d+)/, '$1-$2-$3'));
 
           return dateB - dateA;
         });
 
-        console.log('取得したデータ:', sortedAchievements);
+        console.log('取得したデータ（欠損データ除外後）:', sortedAchievements);
 
         // limitが指定されている場合は上位n件のみを返す
         const limitedAchievements = limit ? sortedAchievements.slice(0, limit) : sortedAchievements;
