@@ -100,7 +100,14 @@ const ProjectCard = ({
           justifyContent="center"
           color={noThumbnailText}
         >
-          No thumbnail available
+          <Image
+            src="../../imgs/jyogi.png"
+            alt="No thumbnail available"
+            fit="contain"
+            maxH="100%"
+            maxW="100%"
+            borderRadius="md"
+          />
         </Box>
       )}
 
