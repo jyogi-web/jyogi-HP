@@ -5,8 +5,7 @@
 - [Cloudflare Pages](https://pages.cloudflare.com/)
 
 ### 仕様
-- [開発環境]()
-- [デプロイ方法]()
+- [開発環境](https://github.com/jyogi-web/jyogi-HP/wiki/%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89)
 
 ### debug
 ```
