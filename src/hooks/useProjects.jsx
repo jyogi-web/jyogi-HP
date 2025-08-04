@@ -8,7 +8,8 @@ export const useProjects = () => {
     useEffect(() => {
         const fetchProjects = async () => {
             try {
-                const url = '/api/projects';
+                const baseUrl = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8787';
+                const url = `${baseUrl}/api/projects`;
 
                 const response = await fetch(url, {
                     method: 'GET',
@@ -31,6 +32,8 @@ export const useProjects = () => {
                 }
 
                 console.log('取得したプロジェクトデータ:', data.data);
+                console.log('配列の長さ:', data.data?.length);
+                console.log('最初のプロジェクト:', data.data?.[0]);
                 setProjects(data.data || []);
                 setIsLoading(false);
             } catch (err) {

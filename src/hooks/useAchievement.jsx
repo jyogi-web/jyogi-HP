@@ -8,7 +8,8 @@ export const useAchievement = (limit = null) => {
   useEffect(() => {
     const fetchAchievements = async () => {
       try {
-        const url = new URL('/api/achievements', window.location.origin);
+        const baseUrl = import.meta.env.VITE_API_BASE_URL;
+        const url = new URL('/api/achievements', baseUrl);
         
         if (limit) {
           url.searchParams.append('limit', limit.toString());
