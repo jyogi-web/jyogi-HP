@@ -8,7 +8,8 @@ export const useNews = (limit = null) => {
     useEffect(() => {
         const fetchNewsList = async () => {
             try {
-                const url = new URL('/api/news', window.location.origin);
+                const baseUrl = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8787';
+                const url = new URL('/api/news', baseUrl);
                 
                 if (limit) {
                     url.searchParams.append('limit', limit.toString());
