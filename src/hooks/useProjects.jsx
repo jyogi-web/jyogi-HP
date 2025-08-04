@@ -9,7 +9,7 @@ export const useProjects = () => {
         const fetchProjects = async () => {
             try {
                 const baseUrl = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8787';
-                const url = `${baseUrl}/api/projects`;
+                const url = new URL('/api/projects', baseUrl);
 
                 const response = await fetch(url, {
                     method: 'GET',
