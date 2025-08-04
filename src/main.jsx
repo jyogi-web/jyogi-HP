@@ -2,17 +2,20 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App.jsx';
 import { BrowserRouter } from 'react-router-dom';
-import { Provider } from "@/components/ui/provider";
+import { Provider as JotaiProvider } from 'jotai'; 
+import { Provider as ChakraProvider } from "@/components/ui/provider";
 import { HelmetProvider } from 'react-helmet-async';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter>
-      <HelmetProvider>
-        <Provider>
-          <App />
-        </Provider>
-      </HelmetProvider>
-    </BrowserRouter>
+    <JotaiProvider>
+      <BrowserRouter>
+        <HelmetProvider>
+          <ChakraProvider>
+            <App />
+          </ChakraProvider>
+        </HelmetProvider>
+      </BrowserRouter>
+    </JotaiProvider>
   </React.StrictMode>
 );
