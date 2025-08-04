@@ -25,7 +25,7 @@ const rawNewsAtom = atom(async () => {
 });
 
 /**
- * UIコンポーネントがNewsデータを読み込むためのアトム
+ * UIコンポーネントがNewsデータを読み込む
  */
 export const newsAtom = atom(
     (get) => get(rawNewsAtom)

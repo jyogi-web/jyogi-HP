@@ -1,15 +1,15 @@
 import { atom } from 'jotai';
 
 /**
- * APIから直接データを取得
+ * APIからProjectsデータを取得する
  */
-const rawAchievementsAtom = atom(async () => {
+const rawProjectsAtom = atom(async () => {
     const baseUrl = import.meta.env.VITE_API_BASE_URL;
     if (!baseUrl) {
         throw new Error('APIのベースURLが設定されていません。');
     }
 
-    const url = new URL('/api/achievements', baseUrl);
+    const url = new URL('/api/projects', baseUrl);
     const response = await fetch(url.toString());
 
     if (!response.ok) {
@@ -25,9 +25,8 @@ const rawAchievementsAtom = atom(async () => {
 });
 
 /**
- * UIコンポーネントがデータを読み込む
-
+ * UIコンポーネントがProjectsデータを読み込む
  */
-export const achievementsAtom = atom(
-    (get) => get(rawAchievementsAtom)
+export const projectsAtom = atom(
+    (get) => get(rawProjectsAtom)
 );
