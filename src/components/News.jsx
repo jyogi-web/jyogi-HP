@@ -6,18 +6,17 @@ import {
     Text,
     Flex,
     Spinner,
-    Alert,
+    Alert, 
 } from "@chakra-ui/react";
 import { useColorModeValue } from "@/components/ui/color-mode";
 import SectionHeader from "./common/SectionHeader";
 import NewsCard from "./NewsCard";
 import { ErrorBoundary } from "react-error-boundary";
-import { newsAtom } from "@/atoms/news"; 
+import { newsAtom } from "@/atoms/news";
 
 const NewsGrid = () => {
     const [newsList] = useAtom(newsAtom);
-    const displayNews = newsList.slice(0, 3); 
-
+    const displayNews = newsList.slice(0, 3);
     const cardBgColor = useColorModeValue("white", "gray.700");
 
     if (displayNews.length === 0) {
@@ -51,7 +50,7 @@ const NewsGrid = () => {
                 >
                     <NewsCard
                         date={news.published}
-                        imagesrc={news.thumbnail || "/imgs/jyogi.png"}
+                        imagesrc={news.thumbnail || "/imgs/news-placeholder.png"}
                         description={news.title}
                         link={news.link}
                     />

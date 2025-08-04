@@ -1,4 +1,4 @@
-import  { useState, useMemo, Suspense } from 'react';
+import React, { useState, useMemo, Suspense } from 'react';
 import { useAtom } from 'jotai';
 import {
     Container,
@@ -12,13 +12,12 @@ import {
 import { useColorModeValue } from "@/components/ui/color-mode";
 import SectionHeader from "@/components/common/SectionHeader";
 import { ErrorBoundary } from 'react-error-boundary';
-import { achievementsAtom } from '@/atoms/achievements'; 
+import { achievementsAtom } from '@/atoms/achievements';
 
 const FilterableAchievementList = () => {
     const [achievements] = useAtom(achievementsAtom);
     const [selectedYear, setSelectedYear] = useState('all');
 
-    // 色設定
     const awardColor = useColorModeValue("yellow.400", "yellow.300");
     const defaultIndicatorColor = useColorModeValue("blue.500", "blue.400");
     const textColor = useColorModeValue("gray.600", "gray.400");

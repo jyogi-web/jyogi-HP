@@ -1,4 +1,4 @@
-import  { Suspense } from 'react';
+import React, { Suspense } from 'react';
 import { useAtom } from 'jotai';
 import {
     Container,
@@ -6,18 +6,17 @@ import {
     Text,
     Timeline,
     Spinner,
-    Alert,
+    Alert, 
 } from "@chakra-ui/react";
 import { useColorModeValue } from "@/components/ui/color-mode";
 import SectionHeader from "./common/SectionHeader";
 import { ErrorBoundary } from 'react-error-boundary';
-import { achievementsAtom } from '@/atoms/achievements'; 
+import { achievementsAtom } from '@/atoms/achievements';
 
 const AchievementTimeline = () => {
     const [achievements] = useAtom(achievementsAtom);
-    const displayAchievements = achievements.slice(0, 5); 
+    const displayAchievements = achievements.slice(0, 5);
 
-    // 色設定
     const dateColor = useColorModeValue("gray.600", "gray.400");
     const titleColor = useColorModeValue("black", "white");
     const summaryColor = useColorModeValue("gray.700", "gray.300");

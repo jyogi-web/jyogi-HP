@@ -13,9 +13,8 @@ import SectionHeader from "@/components/common/SectionHeader";
 import NewsCard from "@/components/NewsCard";
 import Seo from "@/components/common/Seo";
 import { ErrorBoundary } from "react-error-boundary";
-import { newsAtom } from "@/atoms/news"; // 作成したアトムをインポート
+import { newsAtom } from "@/atoms/news";
 
-// データ表示部分
 const FullNewsGrid = () => {
     const [newsList] = useAtom(newsAtom);
     const cardBgColor = useColorModeValue("white", "gray.700");

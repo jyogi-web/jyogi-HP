@@ -13,7 +13,7 @@ import { useColorModeValue } from "@/components/ui/color-mode";
 import ProjectCard from "../components/ProjectCard";
 import Seo from "@/components/common/Seo";
 import { ErrorBoundary } from "react-error-boundary";
-import { projectsAtom } from "@/atoms/projects"; 
+import { projectsAtom } from "@/atoms/projects";
 
 const FullProjectsGrid = () => {
     const [projects] = useAtom(projectsAtom);
