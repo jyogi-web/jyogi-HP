@@ -1,15 +1,6 @@
-import React from "react";
 import { Container, Heading, Button, Flex, Box } from "@chakra-ui/react";
 import { useColorModeValue } from "@/components/ui/color-mode";
 import { Link } from "react-router-dom";
-/*
- * Containerで囲った中で使わないと横線が出ない？
- * @param {string} children  セクションのタイトル
- * @param {string} | null buttontext ボタンのテキスト
- * @param {string} buttonhref ボタンのリンク先
- * @param {string} size タイトルのサイズ
- *
- */
 
 const SectionHeader = ({ children, buttontext, buttonhref, size = "2xl" }) => {
   const lineColor = useColorModeValue("gray.200", "gray.600");
@@ -36,14 +27,7 @@ const SectionHeader = ({ children, buttontext, buttonhref, size = "2xl" }) => {
 
         {buttontext && buttonhref && (
           <Box mr={{ base: 0, sm: 6 }} order={{ base: 3, sm: 2 }}>
-            <Link
-              to={buttonhref}
-              onClick={() => {
-                setTimeout(() => {
-                  window.scrollTo(0, 0);
-                }, 100);
-              }}
-            >
+            <Link to={buttonhref}>
               <Button
                 colorScheme="blue"
                 size="md"
