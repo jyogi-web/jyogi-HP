@@ -23,7 +23,7 @@ const ProjectCard = ({
   const getYoutubeThumbnail = (url) => {
     if (!url) return null;
 
-    const videoId = url.match(/(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/);
+    const videoId = url.match(/(?:youtube\.com\/(?:watch\?v=|embed\/|v\/|shorts\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
     if (videoId && videoId[1]) {
       return `https://img.youtube.com/vi/${videoId[1]}/hqdefault.jpg`;
     }
