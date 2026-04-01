@@ -23,7 +23,7 @@ import React from "react";
 
 const Footer = () => {
     // Googleフォームの埋め込みURL
-    const googleFormUrl = "https://forms.gle/oMww1rnix5eqt8bAA";
+    const googleFormUrl = "https://forms.gle/KA8BMjQUKius8RXZA";
 
     const bgColor = useColorModeValue("gray.700", "gray.900");
     const textColor = "white";
