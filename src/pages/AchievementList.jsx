@@ -7,7 +7,10 @@ import {
     Timeline,
     Flex,
     Spinner,
-    Alert,
+    AlertRoot,
+    AlertIndicator,
+    AlertTitle,
+    AlertDescription,
 } from "@chakra-ui/react";
 import { useColorModeValue } from "@/components/ui/color-mode";
 import SectionHeader from "@/components/common/SectionHeader";
@@ -91,16 +94,16 @@ const FilterableAchievementList = () => {
 };
 
 const ErrorFallback = ({ error }) => (
-    <Alert
+    <AlertRoot
         status="error" variant="subtle" flexDirection="column" alignItems="center"
         justifyContent="center" textAlign="center" rounded="md" py={6}
         bg={useColorModeValue("red.50", "red.900")}
         color={useColorModeValue("red.700", "red.200")}
     >
-        <Alert.Icon boxSize="40px" mr={0} />
-        <Alert.Title mt={4} mb={1} fontSize="lg">データの読み込みに失敗</Alert.Title>
-        <Alert.Description maxWidth="sm">{error.message}</Alert.Description>
-    </Alert>
+        <AlertIndicator boxSize="40px" mr={0} />
+        <AlertTitle mt={4} mb={1} fontSize="lg">データの読み込みに失敗</AlertTitle>
+        <AlertDescription maxWidth="sm">{error.message}</AlertDescription>
+    </AlertRoot>
 );
 
 const LoadingFallback = () => (
