@@ -3,7 +3,6 @@
 import { ClientOnly, IconButton, Skeleton, Span } from '@chakra-ui/react'
 import { ThemeProvider, useTheme } from 'next-themes'
 
-import * as React from 'react'
 import { LuMoon, LuSun } from 'react-icons/lu'
 
 export function ColorModeProvider(props) {
@@ -34,33 +33,31 @@ export function ColorModeIcon() {
   return colorMode === 'dark' ? <LuMoon /> : <LuSun />
 }
 
-export const ColorModeButton = React.forwardRef(
-  function ColorModeButton(props, ref) {
-    const { toggleColorMode } = useColorMode()
-    return (
-      <ClientOnly fallback={<Skeleton boxSize='8' />}>
-        <IconButton
-          onClick={toggleColorMode}
-          variant='ghost'
-          aria-label='Toggle color mode'
-          size='sm'
-          ref={ref}
-          {...props}
-          css={{
-            _icon: {
-              width: '5',
-              height: '5',
-            },
-          }}
-        >
-          <ColorModeIcon />
-        </IconButton>
-      </ClientOnly>
-    )
-  },
-)
+export function ColorModeButton({ ref, ...props }) {
+  const { toggleColorMode } = useColorMode()
+  return (
+    <ClientOnly fallback={<Skeleton boxSize='8' />}>
+      <IconButton
+        onClick={toggleColorMode}
+        variant='ghost'
+        aria-label='Toggle color mode'
+        size='sm'
+        ref={ref}
+        {...props}
+        css={{
+          _icon: {
+            width: '5',
+            height: '5',
+          },
+        }}
+      >
+        <ColorModeIcon />
+      </IconButton>
+    </ClientOnly>
+  )
+}
 
-export const LightMode = React.forwardRef(function LightMode(props, ref) {
+export function LightMode({ ref, ...props }) {
   return (
     <Span
       color='fg'
@@ -72,9 +69,9 @@ export const LightMode = React.forwardRef(function LightMode(props, ref) {
       {...props}
     />
   )
-})
+}
 
-export const DarkMode = React.forwardRef(function DarkMode(props, ref) {
+export function DarkMode({ ref, ...props }) {
   return (
     <Span
       color='fg'
@@ -86,4 +83,4 @@ export const DarkMode = React.forwardRef(function DarkMode(props, ref) {
       {...props}
     />
   )
-})
+}
