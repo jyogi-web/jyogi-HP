@@ -69,7 +69,7 @@ const About = () => {
                 py={1.5}
                 borderRadius="full"
               >
-                121人
+                180人
               </Badge>
             </Box>
 
@@ -131,10 +131,11 @@ const About = () => {
                 <VStack align="start" spacing={2}>
                   <Text fontSize="md" color={textColor}>・4月：新入部員歓迎会</Text>
                   <Text fontSize="md" color={textColor}>・5月：部内ハッカソン</Text>
+                  <Text fontSize="md" color={textColor}>・9月：湯布院旅行</Text>
                   <Text fontSize="md" color={textColor}>・11月：立花祭展示</Text>
-                  <Text fontSize="md" color={textColor}>・1月：部内ハッカソン</Text>
-                  <Text fontSize="md" color={textColor}>・3月：部員旅行</Text>
-                  <Text fontSize="md" color={textColor}>・通年：外部ハッカソン参加</Text>
+                  <Text fontSize="md" color={textColor}>・2月：三団体ハッカソン</Text>
+                  <Text fontSize="md" color={textColor}>・3月：企業とのハッカソン</Text>
+                  <Text fontSize="md" color={textColor}>・通年：外部ハッカソン/各種イベント参加</Text>
                 </VStack>
               </Box>
 
@@ -148,10 +149,11 @@ const About = () => {
                 <VStack align="start" spacing={2}>
                   <Text fontSize="md" color={textColor}>・4月：新入部員歓迎会</Text>
                   <Text fontSize="md" color={textColor}>・5月：部内ハッカソン</Text>
+                  <Text fontSize="md" color={textColor}>・9月：湯布院旅行</Text>
                   <Text fontSize="md" color={textColor}>・11月：立花祭展示</Text>
-                  <Text fontSize="md" color={textColor}>・1月：部内ハッカソン</Text>
-                  <Text fontSize="md" color={textColor}>・3月：部員旅行</Text>
-                  <Text fontSize="md" color={textColor}>・通年：外部ハッカソン参加</Text>
+                  <Text fontSize="md" color={textColor}>・2月：三団体ハッカソン</Text>
+                  <Text fontSize="md" color={textColor}>・3月：企業とのハッカソン</Text>
+                  <Text fontSize="md" color={textColor}>・通年：外部ハッカソン/各種イベント参加</Text>
                 </VStack>
               </Box>
             </Box>
